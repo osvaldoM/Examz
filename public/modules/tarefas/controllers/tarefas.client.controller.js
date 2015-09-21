@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tarefas').controller('TarefasController', ['$scope','$stateParams','$location','Tarefas',
-	function($scope,'$location',Tarefas) {
+angular.module('tarefas').controller('TarefasController', ['$scope','$stateParams','$location','Tarefas','Membros',
+	function($scope,$stateParams,$location,Tarefas,Membros) {
 		// Controller Logic
 		// ...
 
@@ -10,15 +10,17 @@ angular.module('tarefas').controller('TarefasController', ['$scope','$stateParam
 			
 			//Criamos a tarefa
 			var tarefa = new  Tarefas({
-				titulo:this.titulo;
-				descriccao:this.descriccao;
-				prazo:this.prazo;
+				titulo:this.titulo,
+				descriccao:this.descriccao,
+				prazo:this.prazo,
+				membro:'55f1763140377a650ec9fcdd'
 			});
 
-			tarefa.save(function(response){
+			tarefa.$save(function(response){
 				//redireccionamos para a pag. tarefas
-				$location.path='tarefas';
+				$location.path('membros');
 			},function(errorResponse){
+				$location.path('membros');
 				$scope.error=errorResponse.data.message;
 			});
 
@@ -43,20 +45,30 @@ angular.module('tarefas').controller('TarefasController', ['$scope','$stateParam
 		$scope.update= function(){
 			var tarefa = $scope.tarefa;
 			tarefa.$update(function(response){
-				$location.path='tarefas';
+				$location.path('tarefas');
 			},function(errorResponse){
-				$scope.error=error.data.message;
+				$scope.error=errorResponse.data.message;
 			});
-		}
+		};
 
 		$scope.find= function(){
+			//$scope.tarefas=[{titulo:'meu titulo',descriccao:'uma tarefa'},{titulo:'meu titulo',descriccao:'uma tarefa'},{titulo:'meu titulo',descriccao:'uma tarefa'}];
 			$scope.tarefas=Tarefas.query();
 		};
 
 		$scope.findOne= function(){
 			$scope.tarefa=Tarefas.get({
-				tarefaId=$stateParams.tarefaId
+				tarefaId:$stateParams.tarefaId
 			});
+		};
+
+		$scope.listaMembros=function(){
+			$scope.membros=Membros.query();
+			// [
+			// 	{id:'id1',nome:'osvaldoM'},
+			// 	{id:'id1',nome:'osvaldoM'},
+			// 	{id:'id1',nome:'osvaldoM'},
+			// ];
 		};
 
 		$scope.open = function($event) {

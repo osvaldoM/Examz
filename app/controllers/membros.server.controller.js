@@ -109,13 +109,21 @@ Membro.find().exec(function (err,membros) {
 });
 };
 
+exports.lista= function(req,res){
+	Membro.find().select('id','nome').exec(function(membros,err){
+		if (err) {
+			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+		}
+		res.json(membros);
+	});
+};
 /**
 *Filter tasks by date
 */
 exports.filerDate=function(req,res){
 	
 	
-}
+};
 
 
 

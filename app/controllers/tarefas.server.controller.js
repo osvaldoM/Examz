@@ -26,7 +26,7 @@ exports.create = function(req, res) {
  * Show the current Tarefa
  */
 exports.read = function(req, res) {
-	Tarefa.findById(req.params.tarefaId).exec(function(err,tarefa){
+	Tarefa.findById(req.params.tarefaId).populate('membro', 'nome').exec(function(err,tarefa){
 		if(err){
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 		}

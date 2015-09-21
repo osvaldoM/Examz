@@ -1,3 +1,24 @@
-<section data-ng-controller="TarefasController">
-	This is the Tarefas view
+<section data-ng-controller="TarefasController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Taks</h1>
+    </div>
+
+	<span ng-bind="tarefas.length"> ola</span>  
+
+
+    <div class="list-group">
+        <a data-ng-repeat="tarefa in tarefas" data-ng-href="#!/tarefas/{{tarefa._id}}" class="list-group-item">
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="tarefa.membro"></span>
+            </smal>
+            <h4 class="list-group-item-heading" data-ng-bind="tarefa.titulo"></h4>
+            <span data-ng-bind="tarefa.descriccao"></span>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!categories.$resolved || categories.length">
+        Sem tarefas ainda... experimente <a href="/#!/tarefas/create">criar uma</a>?
+    </div>
+
+    <a href="/#!/tarefas/create">Nova tarefa</a>
 </section>
