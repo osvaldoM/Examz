@@ -34,7 +34,8 @@ describe('Membro Model Unit Tests:', function() {
 				nome:'osvaldo',
 				cargo:'Leader',
 				username:'osvaldoM',
-				password:'senha'
+				password:'senha',
+				tarefa:[{titulo:'test task'},{titulo:'tset 2'}]
 
 			});
 

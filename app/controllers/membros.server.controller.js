@@ -109,5 +109,13 @@ Membro.find().exec(function (err,membros) {
 });
 };
 
+/**
+*Filter tasks by date
+*/
+exports.filerDate=function(req,res){
+	
+	
+}
+
 
 

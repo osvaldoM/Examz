@@ -6,7 +6,8 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
-	Tarefa = mongoose.model('Tarefa');
+	Tarefa = mongoose.model('Tarefa'),
+	Membro=mongoose.model('Membro');
 
 /**
  * Globals
@@ -27,13 +28,25 @@ describe('Tarefa Model Unit Tests:', function() {
 			password: 'password'
 		});
 
-		user.save(function() { 
-			tarefa = new Tarefa({
+		user.save(function() {
+
+		 	mem= new Membro({
+		 	nome:'membTeste',
+		 	cargo:'chefe',
+		 	username:'ujdsfdh',
+		 	password:'fhddhfhdf'
+		 });
+		 	mem.save(function(){
+		 	tarefa = new Tarefa({
 				// Add model fields
-				// ...
+				titulo:'TituloTeste',
+				descriccao:'descTeste',
+				membro:mem
 			});
 
-			done();
+			done();	
+		 	})
+			
 		});
 	});
 
