@@ -19,8 +19,8 @@
                 </div>
 
                     <div class="form-group">
-                        <select ng-model="membro" ng-options="membro.nome for membro in membros track by membro.id">
-                          <option value="">-- choose color --</option>
+                        <select ng-model="membro" ng-options="membro.nome for membro in membros track by membro._id">
+                          <option value="">-- Escolher membro --</option>
                         </select>
                     </div>
 

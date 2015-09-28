@@ -8,8 +8,8 @@ module.exports = function(app) {
 		.get(membros.list)
 		.post(membros.create);
 
-	app.route('/membros/lista')
-		.get(membros.lista);
+	app.route('/membros/listar')
+		.get(membros.listar);
 
 
 	// the categoryId param is added to the params object for the request

@@ -74,7 +74,17 @@ exports.delete = function(req, res) {
  * List of Tarefas
  */
 exports.list = function(req, res) {
-	Tarefa.find().exec(function(err,membros){
+	Tarefa.find().populate('membro', 'nome').exec(function(err,tarefas){
+		if(err){
+			return res.status(201).send({message:errorHandler.getErrorMessage(err)});
+		}
+		res.json(tarefas);
+	});
+
+};
+//Lista de tarefas com parametro
+exports.listByMembro = function(req,res) {
+	Tarefa.find({'membro':req.params.membroId}).exec(function(err,membros){
 		if(err){
 			return res.status(201).send({message:errorHandler.getErrorMessage(err)});
 		}

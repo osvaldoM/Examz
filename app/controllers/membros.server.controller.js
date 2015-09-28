@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
+	Tarefa = require('./tarefas.server.controller'),
 	Membro=mongoose.model('Membro'),
     _ = require('lodash');
 
@@ -35,6 +36,7 @@ exports.read = function(req, res) {
 			if(!membro){
 				return res.status(404).send({message:'Membro nao encontrado'});
 			}
+			//var tarefas= Tarefa.get
 			res.json(membro);
 		}
 	});
@@ -108,9 +110,20 @@ Membro.find().exec(function (err,membros) {
 	}
 });
 };
+exports.listar = function(req, res) {
 
+Membro.find().select('id nome').exec(function (err,membros) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(membros);
+	}
+});
+};
 exports.lista= function(req,res){
-	Membro.find().select('id','nome').exec(function(membros,err){
+	Membro.find().select('username').exec(function(membros,err){
 		if (err) {
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 		}

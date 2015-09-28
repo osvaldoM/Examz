@@ -80,8 +80,8 @@ angular.module('membros').controller('MembrosController', ['$scope','$stateParam
 		};
 
       // Search for a category
-        $scope.membroSearch = function() {
-            $location.path('membros/');
+        $scope.membroSearch = function(membro) {
+            $location.path('membros/'+membro._id);
         }; 
 	}
 ]);
