@@ -15,12 +15,12 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
-		/*	serverViews: {
+			serverViews: {
 				files: watchFiles.serverViews,
 				options: {
 					livereload: true
 				}
-			}, */
+			},
 			serverJS: {
 				files: watchFiles.serverJS,
 				tasks: ['jshint'],
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true,
 				}
-			}/*,
+			},
 			clientJS: {
 				files: watchFiles.clientJS,
 				tasks: ['jshint'],
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true
 				}
-			}*/
+			}
 		},
 		jshint: {
 			all: {
