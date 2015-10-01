@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	Tarefa=mongoose.model('Tarefa'),
 	errorHandler=require('./errors.server.controller'),
+	moment= require('moment'),
     _ = require('lodash');
 
 /**
@@ -33,6 +34,11 @@ exports.read = function(req, res) {
 		if(!tarefa){
 			return res.status(404).send({message:'Tarefa nao encontrada'});
 		}
+		 tarefa= tarefa.toJSON();
+		 var now= moment();
+		 var prazo=moment(tarefa.prazo);
+		 var  dias=moment.duration(prazo.diff(now)).humanize();
+		 tarefa.falta= dias;
 		 res.status(201).json(tarefa);
 
 	});
@@ -91,6 +97,19 @@ exports.listByMembro = function(req,res) {
 		res.json(membros);
 	});
 
+};
+
+/**
+*Count number of tasks belonging to a member
+*/
+exports.countTasks=function(membroId){
+
+	Tarefa.count({'membro':membroId}).exec(function(err,nrMembros){
+		if(err){
+			return errorHandler.getErrorMessage(err);
+		}
+		return nrMembros;
+	});
 };
 
 /** 
