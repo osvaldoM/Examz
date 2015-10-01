@@ -61,8 +61,8 @@ angular.module('tarefas').controller('TarefasController', ['$scope','$stateParam
 			var tarefa=Tarefas.get({
 				tarefaId:$stateParams.tarefaId
 			});
-			var d = new Date();
-			tarefa.falta=$scope.diferenca(tarefa.prazo);
+			//var d = new Date();
+			//tarefa.falta=$scope.diferenca(tarefa.prazo);
 			$scope.tarefa= tarefa;
 		};
 

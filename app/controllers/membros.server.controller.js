@@ -106,7 +106,14 @@ Membro.find().exec(function (err,membros) {
 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 	}
 	else{
-		res.json(membros);
+		var membrosT=new Array();
+		membros.forEach(function(membro){
+			membrosT.push(new Object({nome:'sdsd',_id:'dssdj',cargo:'sdd',username:'user',password:'ddsdsdssd', writable:true}));
+		}); 
+		for(var m in membrosT){
+		m=_.extend(m,{conta:5,'nome':'aaa'});
+		} 
+		res.json(membrosT);
 	}
 });
 };
@@ -122,14 +129,7 @@ Membro.find().select('id nome').exec(function (err,membros) {
 	}
 });
 };
-exports.lista= function(req,res){
-	Membro.find().select('username').exec(function(membros,err){
-		if (err) {
-			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
-		}
-		res.json(membros);
-	});
-};
+
 /**
 *Filter tasks by date
 */

@@ -12,6 +12,9 @@
 			<li class="list-group-item">
 				Data de fim: <span data-ng-bind="tarefa.prazo"></span>
 			</li>
+			<li class="list-group-item">
+				Faltam: <span data-ng-bind="tarefa.falta"></span>  para o fim do prazo
+			</li>
 			<span class="btn btn-primary pull-right" type="button">
 			  Membro: <a href="#!/membros/{{tarefa.membro._id}}"> <span data-ng-bind="tarefa.membro.nome"></span> </a>
 			</span>
