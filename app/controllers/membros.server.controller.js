@@ -106,14 +106,11 @@ Membro.find().exec(function (err,membros) {
 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 	}
 	else{
-		var membrosT=new Array();
-		membros.forEach(function(membro){
-			membrosT.push(new Object({nome:'sdsd',_id:'dssdj',cargo:'sdd',username:'user',password:'ddsdsdssd', writable:true}));
-		}); 
-		for(var m in membrosT){
-		m=_.extend(m,{conta:5,'nome':'aaa'});
-		} 
-		res.json(membrosT);
+		// var membrosT=new Array();
+		// membros.forEach(function(membro){
+		// 	membrosT.push(_.extend(membro,{tarefa:Tarefa.countTask(membro.id),nome:'novo'}));
+		//}); 
+		res.json(membros);
 	}
 });
 };

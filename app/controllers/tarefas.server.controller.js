@@ -89,15 +89,15 @@ exports.list = function(req, res) {
 
 };
 //Lista de tarefas com parametro
-exports.listByMembro = function(req,res) {
-	Tarefa.find({'membro':req.params.membroId}).exec(function(err,membros){
-		if(err){
-			return res.status(201).send({message:errorHandler.getErrorMessage(err)});
-		}
-		res.json(membros);
-	});
+// exports.listByMembro = function(req,res) {
+// 	Tarefa.find({'membro':req.params.membroId}).exec(function(err,membros){
+// 		if(err){
+// 			return res.status(201).send({message:errorHandler.getErrorMessage(err)});
+// 		}
+// 		res.json(membros);
+// 	});
 
-};
+// };
 
 /**
 *Count number of tasks belonging to a member
@@ -112,6 +112,10 @@ exports.countTasks=function(membroId){
 	});
 };
 
+exports.countTask=function(membroId){
+
+	return 8;
+};
 /** 
 * Filter tasks by date
 */

@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+//Category= require('Category'),
     _ = require('lodash');
 
 /**
@@ -52,6 +53,6 @@ exports.list = function(req, res) {
             });
         } else {
             res.json(categories);
-        }
+        },
     });
 };

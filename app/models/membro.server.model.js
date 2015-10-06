@@ -32,17 +32,10 @@ var MembroSchema = new Schema({
 		type:String,
 		required:'A senha nao pode ser vazia'
 	},
-	tarefa:[{
-		titulo:{
-			type:String,
-			required:'O titulo eh necessario',
-			default:''
-		},
-		prazo:{
-			type:Date,
-			default:Date.now
-		}
-	}]
+	tarefa:{
+		type:String,
+		default:'0'
+	}
 });
 
 mongoose.model('Membro', MembroSchema);
