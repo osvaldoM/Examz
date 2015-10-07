@@ -1,0 +1,13 @@
+'use strict';
+
+//Exames service used to communicate Exames REST endpoints
+angular.module('exames').factory('Exames', ['$resource',
+	function($resource) {
+		return $resource('exames/:exameId', { exameId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);

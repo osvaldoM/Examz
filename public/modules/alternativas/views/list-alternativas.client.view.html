@@ -1,0 +1,19 @@
+<section data-ng-controller="AlternativasController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Alternativas</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="alternativa in alternativas" data-ng-href="#!/alternativas/{{alternativa._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="alternativa.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="alternativa.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="alternativa.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!alternativas.$resolved || alternativas.length">
+    	No Alternativas yet, why don't you <a href="/#!/alternativas/create">create one</a>?
+    </div>
+</section>
