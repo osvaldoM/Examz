@@ -1,15 +1,21 @@
 'use strict';
 
 // Alternativas controller
-angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas',
-	function($scope, $stateParams, $location, Authentication, Alternativas) {
+angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas','Pergunta'
+	function($scope, $stateParams, $location, Authentication, Alternativas, Pergunta) {
 		$scope.authentication = Authentication;
 
 		// Create new Alternativa
 		$scope.create = function() {
 			// Create new Alternativa object
 			var alternativa = new Alternativas ({
-				name: this.name
+				conteudo: this.conteudo,
+				isCorrecte: this.isCorrecte,
+				letra: this.letra,
+				imagen: this.imagen,
+				//pergunta: pergunta_id
+				pergunta: 'primeiro nome?'
+
 			});
 
 			// Redirect after save

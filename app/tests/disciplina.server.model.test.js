@@ -30,7 +30,7 @@ describe('Disciplina Model Unit Tests:', function() {
 		user.save(function() { 
 			disciplina = new Disciplina({
 				name: 'Disciplina Name',
-				plano: 'Disciplina plano'
+				plano: 'Disciplina plano',
 				user: user
 			});
 

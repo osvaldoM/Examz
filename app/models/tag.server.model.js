@@ -10,10 +10,10 @@ var mongoose = require('mongoose'),
  * Tag Schema
  */
 var TagSchema = new Schema({
-	name: {
+	texto: {
 		type: String,
 		default: '',
-		required: 'Please fill Tag name',
+		required: 'Please fill Tag texto',
 		trim: true
 	},
 	created: {

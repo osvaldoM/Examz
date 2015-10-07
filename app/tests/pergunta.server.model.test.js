@@ -30,7 +30,7 @@ describe('Pergunta Model Unit Tests:', function() {
 
 		user.save(function() { 
 			pergunta = new Pergunta({
-				name: 'Pergunta Name',
+				imagem: 'Pergunta Name',
 				texto: 'Pergunta texto',
 				exame: exame,
 				user: user

@@ -30,7 +30,7 @@ describe('Tarefa Model Unit Tests:', function() {
 
 		user.save(function() {
 
-		 	mem= new Membro({
+		 var	mem= new Membro({
 		 	nome:'membTeste',
 		 	cargo:'chefe',
 		 	username:'ujdsfdh',
@@ -45,7 +45,7 @@ describe('Tarefa Model Unit Tests:', function() {
 			});
 
 			done();	
-		 	})
+		 	});
 			
 		});
 	});

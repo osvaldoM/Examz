@@ -9,7 +9,7 @@ angular.module('cursos').controller('CursosController', ['$scope', '$stateParams
 		$scope.create = function() {
 			// Create new Curso object
 			var curso = new Cursos ({
-				name: this.name
+				designacao: this.designacao
 			});
 
 			// Redirect after save
@@ -17,7 +17,8 @@ angular.module('cursos').controller('CursosController', ['$scope', '$stateParams
 				$location.path('cursos/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.designacao = '';
+			
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

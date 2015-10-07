@@ -29,7 +29,6 @@ describe('Exame Model Unit Tests:', function() {
 
 		user.save(function() { 
 			exame = new Exame({
-				name: 'Exame Name',
 				instrucoes: 'Exame instrucoes',
 				tempo: 'Exame tempo',
 				ano: 'Exame ano',

@@ -1,7 +1,7 @@
 'use strict';
 
 // Curso disciplinas controller
-angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$scope', '$stateParams', '$location', 'Authentication', 'CursoDisciplinas',
+angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$scope', '$stateParams', '$location', 'Authentication', 'CursoDisciplinas','Curso','Disciplina',
 	function($scope, $stateParams, $location, Authentication, CursoDisciplinas) {
 		$scope.authentication = Authentication;
 
@@ -9,7 +9,11 @@ angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$
 		$scope.create = function() {
 			// Create new Curso disciplina object
 			var cursoDisciplina = new CursoDisciplinas ({
-				name: this.name
+				// curso: curso_id,
+				// disciplina: disciplina_id
+
+				curso: 'Inf',
+				disciplina: 'Daw'
 			});
 
 			// Redirect after save

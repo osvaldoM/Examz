@@ -26,7 +26,7 @@ var PerguntaResolvidaSchema = new Schema({
 	},
 	resolucao: {
 		type: Schema.ObjectId,
-		ref: 'User'
+		ref: 'Resolucao'
 	}
 });
 

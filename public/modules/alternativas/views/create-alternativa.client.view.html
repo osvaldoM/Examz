@@ -6,11 +6,40 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <label class="control-label" for="conteudo">Conteudo</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="conteudo" id="conteudo" class="form-control" placeholder="Conteudo" required>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="isCorrecte">isCorrecte?</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="isCorrecte" id="isCorrecte" class="form-control" placeholder="isCorrecte" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="letra">Letra</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="letra" id="letra" class="form-control" placeholder="Letra" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="imagen">Imagen</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="imagen" id="imagen" class="form-control" placeholder="Imagen" required>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="control-label" for="imagen">Imagen</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="imagen" id="imagen" class="form-control" placeholder="Imagen" required>
+                    </div>
+                </div> -->
+
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>

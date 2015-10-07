@@ -6,6 +6,8 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
+	tag = mongoose.model('tag'),
+	pergunta = mongoose.model('pergunta'),
 	TagPergunta = mongoose.model('TagPergunta');
 
 /**
@@ -30,6 +32,8 @@ describe('Tag pergunta Model Unit Tests:', function() {
 		user.save(function() { 
 			tagPergunta = new TagPergunta({
 				name: 'Tag pergunta Name',
+				tag: tag,
+				pergunta: pergunta,
 				user: user
 			});
 

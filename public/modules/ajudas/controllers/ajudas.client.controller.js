@@ -1,15 +1,17 @@
 'use strict';
 
 // Ajudas controller
-angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ajudas',
-	function($scope, $stateParams, $location, Authentication, Ajudas) {
+angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ajudas','Pergunta',
+	function($scope, $stateParams, $location, Authentication, Ajudas,Pergunta) {
 		$scope.authentication = Authentication;
 
 		// Create new Ajuda
 		$scope.create = function() {
 			// Create new Ajuda object
 			var ajuda = new Ajudas ({
-				name: this.name
+				tipo: this.tipo,
+				titulo: this.titulo,
+				pergunta: pergunta_id
 			});
 
 			// Redirect after save

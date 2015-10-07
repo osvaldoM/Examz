@@ -17,7 +17,7 @@ var AjudaSchema = new Schema({
 		trim: true
 	},
 
-	tutulo: {
+	titulo: {
 		type: String,
 		default: '',
 		//required: 'Please fill Ajuda name',

@@ -6,6 +6,7 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
+	exame = mongoose.model('exame'),
 	Resolucao = mongoose.model('Resolucao');
 
 /**
@@ -29,7 +30,13 @@ describe('Resolucao Model Unit Tests:', function() {
 
 		user.save(function() { 
 			resolucao = new Resolucao({
-				name: 'Resolucao Name',
+				pontos: 'Resolucao pontos',
+				tempo: 'Resolucao tempo',
+                 certas: 'Resolucao certas',
+                 erradas: ' Resolucao erradas',
+                 resolvidas: 'Resolucao resolvidas',
+                 nResolvidas: 'Resolucao resolvidas',
+                 exame: exame,
 				user: user
 			});
 
