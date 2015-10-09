@@ -27,15 +27,14 @@ var PerguntaSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-
 	exame: {
 		type: Schema.ObjectId,
 		ref: 'Exame'
 	},
-	user: {
+	ajuda: [{
 		type: Schema.ObjectId,
-		ref: 'User'
-	}
+		ref: 'Ajuda'
+	}]
 });
 
 mongoose.model('Pergunta', PerguntaSchema);

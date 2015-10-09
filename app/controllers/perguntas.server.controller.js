@@ -84,6 +84,19 @@ exports.list = function(req, res) {
 	});
 };
 
+
+exports.list = function(req, res) { 
+	Pergunta.find().sort('-created').populate('user', 'displayName').exec(function(err, perguntas) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(perguntas);
+		}
+	});
+};
+
 /**
  * Pergunta middleware
  */

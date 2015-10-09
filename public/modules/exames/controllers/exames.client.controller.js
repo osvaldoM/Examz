@@ -9,7 +9,9 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.create = function() {
 			// Create new Exame object
 			var exame = new Exames ({
-				name: this.name
+				ano: this.ano,
+				instruccoes:this.instruccoes,
+				tempo:this.tempo
 			});
 
 			// Redirect after save

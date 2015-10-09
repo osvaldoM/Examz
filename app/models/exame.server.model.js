@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 var ExameSchema = new Schema({
 	ano: {
 		type: Number,
-		default: '',
+		default: '1990',
 		//required: 'Please fill Exame name',
 		trim: true
 	},
@@ -30,20 +30,23 @@ var ExameSchema = new Schema({
 		//required: 'Please fill Exame name',
 		trim: true
 	},
-	nrPerguntas: {
-		type: String,
-		default: '',
-		required: 'Please fill Exame name',
-		trim: true
-	},
+	_perguntas: [{
+		type: Schema.ObjectId,
+		ref: 'Pergunta'
+	}],
+	_cursos: [{
+		type: Schema.ObjectId,
+		ref: 'Curso'
+	}],
 	created: {
 		type: Date,
 		default: Date.now
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+	disciplina:{
+		type:Schema.ObjectId,
+		ref:'Disciplina'
+	},
+		nome:this.disciplina+''+this.ano
 });
 
 mongoose.model('Exame', ExameSchema);

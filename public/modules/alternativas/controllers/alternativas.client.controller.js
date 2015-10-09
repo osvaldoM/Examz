@@ -1,7 +1,7 @@
 'use strict';
 
 // Alternativas controller
-angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas','Pergunta'
+angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas','Pergunta',
 	function($scope, $stateParams, $location, Authentication, Alternativas, Pergunta) {
 		$scope.authentication = Authentication;
 

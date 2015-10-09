@@ -9,7 +9,9 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		$scope.create = function() {
 			// Create new Pergunta object
 			var pergunta = new Perguntas ({
-				name: this.name
+				texto: this.texto,
+				imagem:this.imagem,
+				exame:'5613fa75d6d115f81262e96a'
 			});
 
 			// Redirect after save
