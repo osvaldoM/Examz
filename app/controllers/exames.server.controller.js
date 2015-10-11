@@ -26,6 +26,19 @@ exports.create = function(req, res) {
 	});
 };
 
+exports.listar = function(req, res) {
+
+Exame.find().select('id ano').exec(function (err,exames) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(Exame);
+	}
+});
+};
+
 /**
  * Show the current Exame
  */

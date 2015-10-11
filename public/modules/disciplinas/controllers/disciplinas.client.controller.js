@@ -9,7 +9,8 @@ angular.module('disciplinas').controller('DisciplinasController', ['$scope', '$s
 		$scope.create = function() {
 			// Create new Disciplina object
 			var disciplina = new Disciplinas ({
-				name: this.name
+				name: this.name,
+				plano: this.plano
 			});
 
 			// Redirect after save

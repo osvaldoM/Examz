@@ -1,23 +1,40 @@
 'use strict';
 
 // Resolucaos controller
-angular.module('resolucaos').controller('ResolucaosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Resolucaos',
-	function($scope, $stateParams, $location, Authentication, Resolucaos) {
+angular.module('resolucaos').controller('ResolucaosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Resolucaos','Exames',
+	function($scope, $stateParams, $location, Authentication, Resolucaos,Exames) {
 		$scope.authentication = Authentication;
 
 		// Create new Resolucao
 		$scope.create = function() {
 			// Create new Resolucao object
 			var resolucao = new Resolucaos ({
-				name: this.name
+				pontos: this.pontos,
+				tempo: this.tempo,
+				certas: this.certas,
+				erradas: this.erradas,
+				resolvidas: this.resolvidas,
+				nResolvidas: this.nResolvidas,
+				exame: this.exame._id
 			});
+
+
+			$scope.listaExames=function(){
+			$scope.exames=Exames.listar();
+		};
 
 			// Redirect after save
 			resolucao.$save(function(response) {
 				$location.path('resolucaos/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.pontos = '';
+				$scope.tempo = '';
+				$scope.certas = '';
+				$scope.erradas = '';
+				$scope.resolvidas = '';
+				$scope.nResolvidas = '';
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

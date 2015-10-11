@@ -13,14 +13,14 @@ var PerguntaSchema = new Schema({
 	texto: {
 		type: String,
 		default: '',
-		required: 'Please fill Pergunta name',
+		required: 'Please fill Pergunta descriptiom',
 		trim: true
 	},
 
 	imagem: {
 		type: String,
 		default: '',
-		required: 'Please fill Pergunta name',
+		//required: 'Please fill Pergunta name',
 		trim: true
 	},
 	created: {

@@ -21,7 +21,8 @@ angular.module('membros').controller('MembrosController', ['$scope','$stateParam
 				nome:this.nome,
 				cargo:this.cargo,
 				username:this.username,
-				password:this.password});
+				password:this.password
+			});
 			memb.$save(function(response){
 				$scope.membroActual=response._id;
 				$location.path('tarefas/create');

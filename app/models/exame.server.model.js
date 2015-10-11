@@ -45,8 +45,8 @@ var ExameSchema = new Schema({
 	disciplina:{
 		type:Schema.ObjectId,
 		ref:'Disciplina'
-	},
-		nome:this.disciplina+''+this.ano
+	}
+		//nome:this.disciplina+''+this.ano
 });
 
 mongoose.model('Exame', ExameSchema);

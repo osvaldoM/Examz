@@ -7,7 +7,15 @@ angular.module('exames').factory('Exames', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
-			}
+			},
+
+
+			 listar:{
+				      	method:'GET',
+				      	url:'/membros/listar',
+				      	isArray:true
+
+				      }
 		});
 	}
 ]);

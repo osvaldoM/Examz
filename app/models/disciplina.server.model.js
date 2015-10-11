@@ -19,7 +19,7 @@ var DisciplinaSchema = new Schema({
 	plano: {
 		type: String,
 		default: '',
-		required: 'Please fill Disciplina name',
+		required: 'Please fill Disciplina plano',
 		trim: true
 	},
 	created: {

@@ -29,7 +29,7 @@ describe('Curso Model Unit Tests:', function() {
 
 		user.save(function() { 
 			curso = new Curso({
-				designacao: 'Curso Name',
+				designacao: 'Curso Designacao',
 				user: user
 			});
 
