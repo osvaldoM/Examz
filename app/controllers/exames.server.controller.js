@@ -34,7 +34,7 @@ Exame.find().select('id ano').exec(function (err,exames) {
 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 	}
 	else{
-		res.json(Exame);
+		res.json(exames);
 	}
 });
 };

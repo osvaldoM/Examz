@@ -12,7 +12,7 @@ angular.module('exames').factory('Exames', ['$resource',
 
 			 listar:{
 				      	method:'GET',
-				      	url:'/membros/listar',
+				      	url:'/exames/listar',
 				      	isArray:true
 
 				      }

@@ -18,11 +18,6 @@ angular.module('resolucaos').controller('ResolucaosController', ['$scope', '$sta
 				exame: this.exame._id
 			});
 
-
-			$scope.listaExames=function(){
-			$scope.exames=Exames.listar();
-		};
-
 			// Redirect after save
 			resolucao.$save(function(response) {
 				$location.path('resolucaos/' + response._id);
@@ -35,10 +30,16 @@ angular.module('resolucaos').controller('ResolucaosController', ['$scope', '$sta
 				$scope.resolvidas = '';
 				$scope.nResolvidas = '';
 
-			}, function(errorResponse) {
+				}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
-		};
+				});
+
+			};
+
+
+		$scope.listaExames=function(){
+			$scope.exames=Exames.listar();
+			};
 
 		// Remove existing Resolucao
 		$scope.remove = function(resolucao) {
