@@ -7,7 +7,15 @@ angular.module('disciplinas').factory('Disciplinas', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
-			}
+			},
+
+
+			listar:{
+				      	method:'GET',
+				      	url:'/disciplinas/listar',
+				      	isArray:true
+
+				      }
 		});
 	}
 ]);

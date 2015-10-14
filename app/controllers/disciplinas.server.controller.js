@@ -26,6 +26,21 @@ exports.create = function(req, res) {
 	});
 };
 
+exports.listar = function(req, res) {
+
+Disciplina.find().select('id name').exec(function (err,disciplinas) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(disciplinas);
+	}
+});
+};
+
+
+
 /**
  * Show the current Disciplina
  */

@@ -9,6 +9,10 @@ module.exports = function(app) {
 		.get(disciplinas.list)
 		.post(users.requiresLogin, disciplinas.create);
 
+
+		app.route('/disciplinas/listar')
+		.get(disciplinas.listar);
+
 	app.route('/disciplinas/:disciplinaId')
 		.get(disciplinas.read)
 		.put(users.requiresLogin, disciplinas.hasAuthorization, disciplinas.update)

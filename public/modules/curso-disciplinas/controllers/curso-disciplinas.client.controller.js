@@ -1,8 +1,8 @@
 'use strict';
 
 // Curso disciplinas controller
-angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$scope', '$stateParams', '$location', 'Authentication', 'CursoDisciplinas','Curso','Disciplina',
-	function($scope, $stateParams, $location, Authentication, CursoDisciplinas) {
+angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$scope', '$stateParams', '$location', 'Authentication', 'CursoDisciplinas','Cursos','Disciplinas',
+	function($scope, $stateParams, $location, Authentication, CursoDisciplinas,Cursos, Disciplinas) {
 		$scope.authentication = Authentication;
 
 		// Create new Curso disciplina
@@ -43,6 +43,18 @@ angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$
 				});
 			}
 		};
+
+
+		$scope.listaCursos=function(){
+			$scope.cursos=Cursos.listar();
+			};
+
+
+
+        $scope.listaDisciplina=function(){
+			$scope.disciplinas=Disciplinas.listar();
+			};
+
 
 		// Update existing Curso disciplina
 		$scope.update = function() {

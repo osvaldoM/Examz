@@ -26,6 +26,19 @@ exports.create = function(req, res) {
 	});
 };
 
+exports.listar = function(req, res) {
+
+Curso.find().select('id designacao').exec(function (err,cursos) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(cursos);
+	}
+});
+};
+
 /**
  * Show the current Curso
  */
