@@ -7,5 +7,5 @@ angular.module('tag-perguntas').run(['Menus',
 	// 	Menus.addMenuItem('topbar', 'Tag perguntas', 'tag-perguntas', 'dropdown', '/tag-perguntas(/create)?');
 	// 	Menus.addSubMenuItem('topbar', 'tag-perguntas', 'List Tag perguntas', 'tag-perguntas');
 	// 	Menus.addSubMenuItem('topbar', 'tag-perguntas', 'New Tag pergunta', 'tag-perguntas/create');
-	// }
+	 }
 ]);

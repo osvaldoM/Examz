@@ -1,8 +1,8 @@
 'use strict';
 
 // Alternativas controller
-angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas','Pergunta',
-	function($scope, $stateParams, $location, Authentication, Alternativas, Pergunta) {
+angular.module('alternativas').controller('AlternativasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Alternativas','Perguntas',
+	function($scope, $stateParams, $location, Authentication, Alternativas, Perguntas) {
 		$scope.authentication = Authentication;
 
 		// Create new Alternativa
@@ -13,8 +13,8 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 				isCorrecte: this.isCorrecte,
 				letra: this.letra,
 				imagen: this.imagen,
-				//pergunta: pergunta_id
-				pergunta: 'primeiro nome?'
+				pergunta: this.pergunta._id
+				//pergunta: 'primeiro nome?'
 
 			});
 
@@ -45,6 +45,11 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 				});
 			}
 		};
+
+
+            $scope.listPerguntas=function(){
+			$scope.perguntas=Perguntas.listar();
+			};
 
 		// Update existing Alternativa
 		$scope.update = function() {

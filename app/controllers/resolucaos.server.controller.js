@@ -26,6 +26,19 @@ exports.create = function(req, res) {
 	});
 };
 
+exports.listar = function(req, res) {
+
+Resolucao.find().select('id resolvidas').exec(function (err,resolucaos) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(resolucaos);
+	}
+});
+};
+
 /**
  * Show the current Resolucao
  */

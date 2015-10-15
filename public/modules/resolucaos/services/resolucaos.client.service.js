@@ -7,7 +7,15 @@ angular.module('resolucaos').factory('Resolucaos', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
-			}
+			},
+
+			listar:{
+				      	method:'GET',
+				      	url:'/resolucaos/listar',
+				      	isArray:true
+
+				      }
+
 		});
 	}
 ]);

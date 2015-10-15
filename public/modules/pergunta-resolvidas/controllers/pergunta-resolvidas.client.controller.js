@@ -1,15 +1,16 @@
 'use strict';
 
 // Pergunta resolvidas controller
-angular.module('pergunta-resolvidas').controller('PerguntaResolvidasController', ['$scope', '$stateParams', '$location', 'Authentication', 'PerguntaResolvidas',
-	function($scope, $stateParams, $location, Authentication, PerguntaResolvidas) {
+angular.module('pergunta-resolvidas').controller('PerguntaResolvidasController', ['$scope', '$stateParams', '$location', 'Authentication', 'PerguntaResolvidas','Resolucaos',
+	function($scope, $stateParams, $location, Authentication, PerguntaResolvidas,Resolucaos) {
 		$scope.authentication = Authentication;
 
 		// Create new Pergunta resolvida
 		$scope.create = function() {
 			// Create new Pergunta resolvida object
 			var perguntaResolvida = new PerguntaResolvidas ({
-				name: this.name
+				estado: this.estado,
+				resolucao: this.resolucao._id
 			});
 
 			// Redirect after save
@@ -23,6 +24,9 @@ angular.module('pergunta-resolvidas').controller('PerguntaResolvidasController',
 			});
 		};
 
+          $scope.listResolucao=function(){
+			$scope.resolucaos=Resolucaos.listar();
+			};
 		// Remove existing Pergunta resolvida
 		$scope.remove = function(perguntaResolvida) {
 			if ( perguntaResolvida ) { 

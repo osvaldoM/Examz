@@ -1,8 +1,8 @@
 'use strict';
 
 // Ajudas controller
-angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ajudas','Pergunta',
-	function($scope, $stateParams, $location, Authentication, Ajudas,Pergunta) {
+angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ajudas','Perguntas',
+	function($scope, $stateParams, $location, Authentication, Ajudas,Perguntas) {
 		$scope.authentication = Authentication;
 
 		// Create new Ajuda
@@ -24,6 +24,11 @@ angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
+		
+            $scope.listPerguntas=function(){
+			$scope.perguntas=Perguntas.listar();
+			};
 
 		// Remove existing Ajuda
 		$scope.remove = function(ajuda) {

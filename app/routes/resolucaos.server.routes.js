@@ -9,6 +9,9 @@ module.exports = function(app) {
 		.get(resolucaos.list)
 		.post(users.requiresLogin, resolucaos.create);
 
+		app.route('/resolucaos/listar')
+		.get(resolucaos.listar);
+
 	app.route('/resolucaos/:resolucaoId')
 		.get(resolucaos.read)
 		.put(users.requiresLogin, resolucaos.hasAuthorization, resolucaos.update)

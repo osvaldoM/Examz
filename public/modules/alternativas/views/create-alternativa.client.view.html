@@ -1,4 +1,4 @@
-<section data-ng-controller="AlternativasController">
+<section data-ng-controller="AlternativasController" data-ng-init="listPerguntas()">
     <div class="page-header">
         <h1>New Alternativa</h1>
     </div>
@@ -33,12 +33,11 @@
                     </div>
                 </div>
 
-                <!-- <div class="form-group">
-                    <label class="control-label" for="imagen">Imagen</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="imagen" id="imagen" class="form-control" placeholder="Imagen" required>
+              <div class="form-group">
+                        <select ng-model="pergunta" ng-options="pergunta.texto for pergunta in perguntas track by pergunta._id">
+                          <option value="">-- Escolher pergunta --</option>
+                        </select>
                     </div>
-                </div> -->
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
