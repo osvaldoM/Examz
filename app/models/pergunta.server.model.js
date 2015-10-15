@@ -13,7 +13,7 @@ var PerguntaSchema = new Schema({
 	texto: {
 		type: String,
 		default: '',
-		required: 'Please fill Pergunta descriptiom',
+		//required: 'Please fill Pergunta descriptiom',
 		trim: true
 	},
 

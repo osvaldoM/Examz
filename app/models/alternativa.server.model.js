@@ -13,7 +13,7 @@ var AlternativaSchema = new Schema({
 	conteudo: {
 		type: String,
 		default: '',
-		required: 'Please fill Alternativa conteudo',
+		//required: 'Please fill Alternativa conteudo',
 		trim: true
 	},
 

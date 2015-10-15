@@ -9,11 +9,11 @@ angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$
 		$scope.create = function() {
 			// Create new Curso disciplina object
 			var cursoDisciplina = new CursoDisciplinas ({
-				// curso: curso_id,
-				// disciplina: disciplina_id
+				curso: this.curso._id,
+				disciplina: this.disciplina._id
 
-				curso: 'Inf',
-				disciplina: 'Daw'
+				//curso: 'Inf',
+				//disciplina: 'Daw'
 			});
 
 			// Redirect after save
@@ -45,16 +45,10 @@ angular.module('curso-disciplinas').controller('CursoDisciplinasController', ['$
 		};
 
 
-		$scope.listaCursos=function(){
+		$scope.listaCursosDis=function(){
 			$scope.cursos=Cursos.listar();
-			};
-
-
-
-        $scope.listaDisciplina=function(){
 			$scope.disciplinas=Disciplinas.listar();
 			};
-
 
 		// Update existing Curso disciplina
 		$scope.update = function() {

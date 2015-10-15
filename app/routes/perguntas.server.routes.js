@@ -9,6 +9,9 @@ module.exports = function(app) {
 		.get(perguntas.list)
 		.post(users.requiresLogin, perguntas.create);
 
+		app.route('/perguntas/listar')
+		.get(perguntas.listar);
+
 	app.route('/perguntas/:perguntaId')
 		.get(perguntas.read)
 		.put(users.requiresLogin, perguntas.hasAuthorization, perguntas.update)

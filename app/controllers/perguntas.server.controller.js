@@ -52,6 +52,19 @@ exports.update = function(req, res) {
 	});
 };
 
+
+exports.listar = function(req, res) {
+
+Pergunta.find().select('id texto').exec(function (err,perguntas) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(perguntas);
+	}
+});
+};
 /**
  * Delete an Pergunta
  */

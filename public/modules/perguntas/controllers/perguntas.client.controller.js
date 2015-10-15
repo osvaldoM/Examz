@@ -1,8 +1,8 @@
 'use strict';
 
 // Perguntas controller
-angular.module('perguntas').controller('PerguntasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Perguntas','Exame',
-	function($scope, $stateParams, $location, Authentication, Perguntas,Exame) {
+angular.module('perguntas').controller('PerguntasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Perguntas','Exames',
+	function($scope, $stateParams, $location, Authentication, Perguntas,Exames) {
 		$scope.authentication = Authentication;
 
 		// Create new Pergunta
@@ -11,7 +11,7 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 			var pergunta = new Perguntas ({
 				texto: this.texto,
 				imagem: this.imagem,
-				exame:'5613fa75d6d115f81262e96a'
+				exame: this.exame._id
 			});
 
 			// Redirect after save
@@ -41,6 +41,11 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 				});
 			}
 		};
+
+
+            $scope.listaExames=function(){
+			$scope.exames=Exames.listar();
+			};
 
 		// Update existing Pergunta
 		$scope.update = function() {

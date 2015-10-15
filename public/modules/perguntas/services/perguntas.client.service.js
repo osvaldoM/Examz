@@ -7,7 +7,15 @@ angular.module('perguntas').factory('Perguntas', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
-			}
+			},
+
+
+			 listar:{
+				      	method:'GET',
+				      	url:'/perguntas/listar',
+				      	isArray:true
+
+				      }
 		});
 	}
 ]);
