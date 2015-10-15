@@ -7,8 +7,8 @@ angular.module('membros').run(['Menus',
 		// ...
 
 		//this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic, roles, position)
-		Menus.addMenuItem('topbar', 'Membros', 'membro', 'dropdown', '/membros(/create)?');
-		Menus.addSubMenuItem('topbar', 'membros', 'List Membros', 'membros');
-		Menus.addSubMenuItem('topbar', 'membros', 'New Membro', 'membros/create');
+		// Menus.addMenuItem('topbar', 'Membros', 'membro', 'dropdown', '/membros(/create)?');
+		// Menus.addSubMenuItem('topbar', 'membros', 'List Membros', 'membros');
+		// Menus.addSubMenuItem('topbar', 'membros', 'New Membro', 'membros/create');
 	}
 ]);
