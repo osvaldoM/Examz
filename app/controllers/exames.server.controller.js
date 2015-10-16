@@ -26,24 +26,35 @@ exports.create = function(req, res) {
 	});
 };
 
-exports.listar = function(req, res) {
+// exports.listar = function(req, res) {
 
-Exame.find().select('id ano').exec(function (err,exames) {
-	// body...
-	if(err){
-		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
-	}
-	else{
-		res.json(exames);
-	}
-});
-};
+// Exame.find().select('id ano').exec(function (err,exames) {
+// 	// body...
+// 	if(err){
+// 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+// 	}
+// 	else{
+// 		res.json(exames);
+// 	}
+// });
+// };
 
 /**
  * Show the current Exame
  */
 exports.read = function(req, res) {
-	res.jsonp(req.exame);
+	Exame.findById(req.params.exameId).populate('pergunta').exec(function(err,exame){
+		if(err){
+			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+		}
+		else{
+			if(!exame){
+				return res.status(404).send({message:'Exame nao encontrado'});
+			}
+			res.json(exame);
+		}
+	});
+
 };
 
 /**
@@ -86,7 +97,7 @@ exports.delete = function(req, res) {
  * List of Exames
  */
 exports.list = function(req, res) { 
-	Exame.find().sort('-created').populate('_perguntas').exec(function(err, exames) {
+	Exame.find().select('id ano').sort('-created').exec(function(err, exames) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
