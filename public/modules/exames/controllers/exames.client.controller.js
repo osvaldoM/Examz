@@ -1,8 +1,8 @@
 'use strict';
 
 // Exames controller
-angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exames',
-	function($scope, $stateParams, $location, Authentication, Exames) {
+angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exames','Disciplinas',
+	function($scope, $stateParams, $location, Authentication, Exames, Disciplinas) {
 		$scope.authentication = Authentication;
 
 		// Create new Exame
@@ -41,6 +41,11 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 				});
 			}
 		};
+
+
+		$scope.listaDisciplinas=function(){
+			$scope.disciplinas=Disciplinas.listar();
+			};
 
 		// Update existing Exame
 		$scope.update = function() {
