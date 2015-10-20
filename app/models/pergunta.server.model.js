@@ -27,13 +27,17 @@ var PerguntaSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	exame: {
+	_exame: {
 		type: Schema.ObjectId,
 		ref: 'Exame'
 	},
-	ajuda: [{
+	_ajuda: [{
 		type: Schema.ObjectId,
 		ref: 'Ajuda'
+	}],
+	_alternativas:[{
+		type:Schema.ObjectId,
+		ref:'Alternativa'
 	}]
 });
 

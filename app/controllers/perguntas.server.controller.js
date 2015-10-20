@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Pergunta = mongoose.model('Pergunta'),
+	Exame = require('./exames.server.controller'),
 	_ = require('lodash');
 
 /**
@@ -21,7 +22,40 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			Exame.addPergunta(pergunta.exame,pergunta.id);
 			res.jsonp(pergunta);
+		}
+	});
+};
+
+
+exports.addAlternativa= function(perguntaId,alternativaId){
+
+	console.log('recebido '+alternativaId);
+	Pergunta.findById(perguntaId).exec(function(err,pergunta){
+		if(err){
+			console.log('erro finding question`');
+			return;
+		}
+		else{
+			if(!pergunta){
+			console.log('erro finding question`');
+			return;
+			}
+			var pergunta1=pergunta.toObject();
+			pergunta1._alternativas.push(alternativaId);
+			pergunta = _.extend(pergunta ,pergunta1);
+
+			pergunta.save(function(err) {
+				if (err) {
+					console.log('erro ao salvar');
+					return; 
+					
+				} else {
+					console.log('sucesso');
+				}
+			});
+
 		}
 	});
 };
@@ -30,7 +64,16 @@ exports.create = function(req, res) {
  * Show the current Pergunta
  */
 exports.read = function(req, res) {
-	res.jsonp(req.pergunta);
+	Pergunta.findById(req.params.perguntaId).populate('_alternativas').exec(function(err,pergunta){
+		if(err){
+			res.status(201).send({message:errorHandler.getErrorMessage(err)});
+		}
+		if(!pergunta){
+			res.status(404).send({message:'Pergunta nap encontrada'});
+		}
+			res.json(pergunta);
+
+	});
 };
 
 /**

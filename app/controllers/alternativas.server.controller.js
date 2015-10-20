@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Alternativa = mongoose.model('Alternativa'),
+	Pergunta = require('./perguntas.server.controller'),
 	_ = require('lodash');
 
 /**
@@ -21,6 +22,7 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			Pergunta.addAlternativa(alternativa.pergunta,alternativa.id);
 			res.jsonp(alternativa);
 		}
 	});

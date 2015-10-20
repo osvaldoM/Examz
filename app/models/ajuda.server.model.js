@@ -27,13 +27,9 @@ var AjudaSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	pergunta: {
+	_pergunta: {
 		type: Schema.ObjectId,
 		ref: 'Pergunta'
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
 	}
 });
 

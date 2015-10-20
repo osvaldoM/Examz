@@ -26,24 +26,62 @@ exports.create = function(req, res) {
 	});
 };
 
-// exports.listar = function(req, res) {
+exports.addPergunta= function(exameId,perguntaId){
 
-// Exame.find().select('id ano').exec(function (err,exames) {
-// 	// body...
-// 	if(err){
-// 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
-// 	}
-// 	else{
-// 		res.json(exames);
-// 	}
-// });
-// };
+	console.log('recebido '+exameId);
+	Exame.findById(exameId).exec(function(err,exame){
+		if(err){
+			console.log('erro finding exam`');
+			return;
+		}
+		else{
+			if(!exame){
+			console.log('erro finding exam`');
+			return;
+			}
+			var exame1=exame.toObject();
+			console.log('exame '+exame1.ano);
+			exame1._perguntas.push(perguntaId);
+			console.log(exame1._perguntas);
+			exame = _.extend(exame , exame1);
+
+			exame.save(function(err) {
+				if (err) {
+					console.log('erro ao salvar');
+					return; 
+					
+				} else {
+					console.log('sucesso');
+				}
+			});
+
+		}
+	});
+
+	//var exame= Exame.findById(perguntaId)
+
+
+
+};
+
+exports.listar = function(req, res) {
+
+Exame.find().select('id ano').exec(function (err,exames) {
+	// body...
+	if(err){
+		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+	}
+	else{
+		res.json(exames);
+	}
+});
+};
 
 /**
  * Show the current Exame
  */
 exports.read = function(req, res) {
-	Exame.findById(req.params.exameId).populate('pergunta').exec(function(err,exame){
+	Exame.findById(req.params.exameId).populate('_perguntas').exec(function(err,exame){
 		if(err){
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 		}
