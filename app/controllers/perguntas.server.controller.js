@@ -30,8 +30,7 @@ exports.create = function(req, res) {
 
 
 exports.addAlternativa= function(perguntaId,alternativaId){
-
-	console.log('recebido '+alternativaId);
+	
 	Pergunta.findById(perguntaId).exec(function(err,pergunta){
 		if(err){
 			console.log('erro finding question`');
@@ -44,6 +43,38 @@ exports.addAlternativa= function(perguntaId,alternativaId){
 			}
 			var pergunta1=pergunta.toObject();
 			pergunta1._alternativas.push(alternativaId);
+			pergunta = _.extend(pergunta ,pergunta1);
+
+			pergunta.save(function(err) {
+				if (err) {
+					console.log('erro ao salvar');
+					return; 
+					
+				} else {
+					console.log('sucesso');
+				}
+			});
+
+		}
+	});
+};
+
+
+
+exports.addAjuda=function(perguntaId,ajudaId){
+	
+	Pergunta.findById(perguntaId).exec(function(err,pergunta){
+		if(err){
+			console.log('erro finding question`');
+			return;
+		}
+		else{
+			if(!pergunta){
+			console.log('erro finding question`');
+			return;
+			}
+			var pergunta1=pergunta.toObject();
+			pergunta1._ajudas.push(ajudaId);
 			pergunta = _.extend(pergunta ,pergunta1);
 
 			pergunta.save(function(err) {

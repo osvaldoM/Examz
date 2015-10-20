@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Ajuda = mongoose.model('Ajuda'),
+	Pergunta = require('./perguntas.server.controller'),
 	_ = require('lodash');
 
 /**
@@ -21,6 +22,7 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			Pergunta.addAjuda(ajuda.pergunta,ajuda.id);
 			res.jsonp(ajuda);
 		}
 	});
