@@ -3,8 +3,10 @@
 //Perguntas service used to communicate Perguntas REST endpoints
 angular.module('perguntas').factory('Perguntas', ['$resource',
 	function($resource) {
-		return $resource('perguntas/:perguntaId', { perguntaId: '@_id'
-		}, {
+		return $resource('perguntas/:perguntaId', 
+			{ perguntaId: '@_id' }, 
+		           
+		   {
 			update: {
 				method: 'PUT'
 			},
@@ -15,7 +17,13 @@ angular.module('perguntas').factory('Perguntas', ['$resource',
 				      	url:'/perguntas/listar',
 				      	isArray:true
 
-				      }
+				      },
+			byExame:{
+					method:'GET',
+					url:'/perguntas/byExame',
+					isArray:true,
+						
+			}
 		});
 	}
 ]);

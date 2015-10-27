@@ -22,8 +22,8 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			Pergunta.addAjuda(ajuda.pergunta,ajuda.id);
-			res.jsonp(ajuda);
+			Pergunta.addAjuda(ajuda._pergunta,ajuda.id);
+			res.json(ajuda);
 		}
 	});
 };

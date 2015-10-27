@@ -29,7 +29,8 @@ var AjudaSchema = new Schema({
 	},
 	_pergunta: {
 		type: Schema.ObjectId,
-		ref: 'Pergunta'
+		ref: 'Pergunta',
+		required:'Um ajuda tem de estar associado a uma Pergunta'
 	}
 });
 

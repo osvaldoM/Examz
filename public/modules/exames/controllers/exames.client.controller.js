@@ -1,8 +1,8 @@
 'use strict';
 
 // Exames controller
-angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exames','Disciplinas',
-	function($scope, $stateParams, $location, Authentication, Exames, Disciplinas) {
+angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exames','Disciplinas','Perguntas',
+	function($scope, $stateParams, $location, Authentication, Exames, Disciplinas,Perguntas) {
 		$scope.authentication = Authentication;
 
 		// Create new Exame
@@ -11,7 +11,8 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			var exame = new Exames ({
 				ano: this.ano,
 				instruccoes:this.instruccoes,
-				tempo:this.tempo
+				tempo:this.tempo,
+				disciplina:this.disciplina._id
 			});
 
 			// Redirect after save
@@ -68,6 +69,10 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			$scope.exame = Exames.get({ 
 				exameId: $stateParams.exameId
 			});
+	//	$scope.exame.perguntas=Perguntas.byExame({
+	//		perguntaId:$scope.exame._id
+	//	});
+		    // $scope.exame.perguntas=Perguntas.query();
 		};
 	}
 ]);

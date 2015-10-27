@@ -49,4 +49,7 @@ var ExameSchema = new Schema({
 		//nome:this.disciplina+''+this.ano
 });
 
+	var deepPopulate=require('mongoose-deep-populate')(mongoose);
+	ExameSchema.plugin(deepPopulate);
+
 mongoose.model('Exame', ExameSchema);

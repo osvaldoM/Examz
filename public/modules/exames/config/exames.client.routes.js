@@ -7,7 +7,8 @@ angular.module('exames').config(['$stateProvider',
 		$stateProvider.
 		state('listExames', {
 			url: '/exames',
-			templateUrl: 'modules/exames/views/list-exames.client.view.html'
+			templateUrl: 'modules/exames/views/list-exames.client.view.html',
+			//css: 'css/badge.css'
 		}).
 		state('createExame', {
 			url: '/exames/create',

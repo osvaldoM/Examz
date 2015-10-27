@@ -28,21 +28,18 @@ exports.create = function(req, res) {
 
 exports.addPergunta= function(exameId,perguntaId){
 
-	console.log('recebido '+exameId);
 	Exame.findById(exameId).exec(function(err,exame){
 		if(err){
-			console.log('erro finding exam`');
+			console.log('erro finding exam first');
 			return;
 		}
 		else{
 			if(!exame){
-			console.log('erro finding exam`');
+			console.log('exam not found'+exameId);
 			return;
 			}
 			var exame1=exame.toObject();
-			console.log('exame '+exame1.ano);
 			exame1._perguntas.push(perguntaId);
-			console.log(exame1._perguntas);
 			exame = _.extend(exame , exame1);
 
 			exame.save(function(err) {
@@ -58,7 +55,6 @@ exports.addPergunta= function(exameId,perguntaId){
 		}
 	});
 
-	//var exame= Exame.findById(perguntaId)
 
 
 
@@ -81,6 +77,7 @@ Exame.find().select('id ano').exec(function (err,exames) {
  * Show the current Exame
  */
 exports.read = function(req, res) {
+	
 	Exame.findById(req.params.exameId).populate('_perguntas').exec(function(err,exame){
 		if(err){
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
@@ -94,6 +91,20 @@ exports.read = function(req, res) {
 	});
 
 };
+
+/**
+ * Exame middleware
+ */
+// exports.exameByID = function(req, res, next, id) { 
+// 	 Exame.findById(id).populate('_perguntas').exec(function(err, exame) {
+// 	//Exame.findById(id).deepPopulate('_perguntas.alternativas').exec(function(err, exame) {
+// 		if (err) return next(err);
+// 		if (! exame) return next(new Error('Failed to load Exame ' + id));
+// 		req.exame = exame ;
+// 		next();
+// 	});
+// };
+
 
 /**
  * Update a Exame
@@ -135,7 +146,7 @@ exports.delete = function(req, res) {
  * List of Exames
  */
 exports.list = function(req, res) { 
-	Exame.find().select('id ano').sort('-created').exec(function(err, exames) {
+	Exame.find().select('id ano disciplina').populate('disciplina','name').sort({ano:-1}).exec(function(err, exames) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -146,17 +157,6 @@ exports.list = function(req, res) {
 	});
 };
 
-/**
- * Exame middleware
- */
-exports.exameByID = function(req, res, next, id) { 
-	Exame.findById(id).populate('user', 'displayName').exec(function(err, exame) {
-		if (err) return next(err);
-		if (! exame) return next(new Error('Failed to load Exame ' + id));
-		req.exame = exame ;
-		next();
-	});
-};
 
 /**
  * Exame authorization middleware

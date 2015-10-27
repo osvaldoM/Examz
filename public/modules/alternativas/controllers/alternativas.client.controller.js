@@ -49,6 +49,10 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 
             $scope.listPerguntas=function(){
 			$scope.perguntas=Perguntas.listar();
+
+			$scope.perguntas2 = Perguntas.byExame({ 
+				perguntaId: '562679b05cea858510e475e5'
+			});
 			};
 
 		// Update existing Alternativa

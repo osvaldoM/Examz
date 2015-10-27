@@ -11,7 +11,7 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 			var pergunta = new Perguntas ({
 				texto: this.texto,
 				imagem: this.imagem,
-				exame: this.exame._id
+				_exame: this.exame._id
 			});
 
 			// Redirect after save

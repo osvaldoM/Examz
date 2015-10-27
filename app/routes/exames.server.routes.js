@@ -17,6 +17,8 @@ module.exports = function(app) {
 		.put(users.requiresLogin, exames.hasAuthorization, exames.update)
 		.delete(users.requiresLogin, exames.hasAuthorization, exames.delete);
 
-	// Finish by binding the Exame middleware
-	app.param('exameId', exames.exameByID);
+		
+
+	// // Finish by binding the Exame middleware
+	// app.param('exameId', exames.exameByID);
 };

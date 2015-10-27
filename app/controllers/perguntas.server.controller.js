@@ -15,6 +15,8 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var pergunta = new Pergunta(req.body);
 	pergunta.user = req.user;
+	var exame=pergunta._exame;
+	console.log('valor '+exame);
 
 	pergunta.save(function(err) {
 		if (err) {
@@ -22,7 +24,7 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			Exame.addPergunta(pergunta.exame,pergunta.id);
+			Exame.addPergunta(exame,pergunta.id);
 			res.jsonp(pergunta);
 		}
 	});
@@ -74,7 +76,7 @@ exports.addAjuda=function(perguntaId,ajudaId){
 			return;
 			}
 			var pergunta1=pergunta.toObject();
-			pergunta1._ajudas.push(ajudaId);
+			pergunta1._ajuda.push(ajudaId);
 			pergunta = _.extend(pergunta ,pergunta1);
 
 			pergunta.save(function(err) {
@@ -95,17 +97,59 @@ exports.addAjuda=function(perguntaId,ajudaId){
  * Show the current Pergunta
  */
 exports.read = function(req, res) {
-	Pergunta.findById(req.params.perguntaId).populate('_alternativas').exec(function(err,pergunta){
+	Pergunta.findById(req.params.perguntaId).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
 		if(err){
 			res.status(201).send({message:errorHandler.getErrorMessage(err)});
 		}
+		else{
 		if(!pergunta){
 			res.status(404).send({message:'Pergunta nap encontrada'});
-		}
-			res.json(pergunta);
+			}
+			// var promise = doc.
+			//   populate('company').
+			//   populate({
+			//     path: 'notes',
+			//     match: /airline/,
+			//     select: 'text',
+			//     model: 'modelName'
+			//     options: opts
+			//   }).
+			//   execPopulate();
 
+			// // summary
+			// doc.execPopulate()
+			res.json(pergunta);
+		}
 	});
 };
+
+exports.byExame = function(req, res) {
+	Pergunta.find({'_exame':req.params.perguntaId}).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
+		if(err){
+			res.status(201).send({message:errorHandler.getErrorMessage(err)});
+		}
+		else{
+		if(!pergunta){
+			res.status(404).send({message:'Pergunta nap encontrada'});
+			}
+			// var promise = doc.
+			//   populate('company').
+			//   populate({
+			//     path: 'notes',
+			//     match: /airline/,
+			//     select: 'text',
+			//     model: 'modelName'
+			//     options: opts
+			//   }).
+			//   execPopulate();
+
+			// // summary
+			// doc.execPopulate()
+			res.json(pergunta);
+		}
+	});
+};
+
 
 /**
  * Update a Pergunta

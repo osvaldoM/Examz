@@ -29,7 +29,8 @@ var PerguntaSchema = new Schema({
 	},
 	_exame: {
 		type: Schema.ObjectId,
-		ref: 'Exame'
+		ref: 'Exame',
+		required:'Um pergunta tem de estar associado a uma Exame'
 	},
 	_ajuda: [{
 		type: Schema.ObjectId,

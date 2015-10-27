@@ -17,6 +17,11 @@ module.exports = function(app) {
 		.put(users.requiresLogin, perguntas.hasAuthorization, perguntas.update)
 		.delete(users.requiresLogin, perguntas.hasAuthorization, perguntas.delete);
 
+
+
+	app.route('/perguntas/byExame/:perguntaId')
+		.get(perguntas.byExame);
+
 	// Finish by binding the Pergunta middleware
-	app.param('perguntaId', perguntas.perguntaByID);
+	//app.param('perguntaId', perguntas.perguntaByID);
 };

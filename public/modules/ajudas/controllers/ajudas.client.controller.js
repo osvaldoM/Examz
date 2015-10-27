@@ -11,7 +11,7 @@ angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams
 			var ajuda = new Ajudas ({
 				tipo: this.tipo,
 				titulo: this.titulo,
-				pergunta:this.pergunta_id
+				_pergunta:this.pergunta._id
 			});
 
 			// Redirect after save
