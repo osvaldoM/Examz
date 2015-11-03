@@ -69,9 +69,11 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			$scope.exame = Exames.get({ 
 				exameId: $stateParams.exameId
 			});
-	//	$scope.exame.perguntas=Perguntas.byExame({
-	//		perguntaId:$scope.exame._id
-	//	});
+		console.log('id da pergunta '+$scope.exame._id);
+		$scope.exame.perguntas=Perguntas.byExame({
+			//console.log('id pergunta '+$scope.exame._id);
+			perguntaId:'562679b05cea858510e475e5'
+		});
 		    // $scope.exame.perguntas=Perguntas.query();
 		};
 	}

@@ -43,9 +43,9 @@
 
 
 .img {
- background-image: url(https://placeimg.com/640/640/arch);
- width:640px;
- height:500px;
+ background-image: url('../img/univs.png');
+ /*width:640px;
+*/ height:500px;
  position: relative;
 }
 .txt {
@@ -60,5 +60,7 @@
 }
 
     body {
-       height:2000px;
+       height:1000px;
+       background-image: url('https://placeimg.com/1720/1280/arch');
+ 
     }

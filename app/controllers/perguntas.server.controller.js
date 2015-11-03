@@ -13,6 +13,7 @@ var mongoose = require('mongoose'),
  * Create a Pergunta
  */
 exports.create = function(req, res) {
+		console.log('AT create');
 	var pergunta = new Pergunta(req.body);
 	pergunta.user = req.user;
 	var exame=pergunta._exame;
@@ -97,6 +98,8 @@ exports.addAjuda=function(perguntaId,ajudaId){
  * Show the current Pergunta
  */
 exports.read = function(req, res) {
+			console.log('AT read '+req.params.perguntaId);
+
 	Pergunta.findById(req.params.perguntaId).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
 		if(err){
 			res.status(201).send({message:errorHandler.getErrorMessage(err)});
@@ -124,9 +127,10 @@ exports.read = function(req, res) {
 };
 
 exports.byExame = function(req, res) {
+	console.log('AT SEARCHBYID');
 	Pergunta.find({'_exame':req.params.perguntaId}).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
 		if(err){
-			res.status(201).send({message:errorHandler.getErrorMessage(err)});
+			res.status(202).send({message:errorHandler.getErrorMessage(err)});
 		}
 		else{
 		if(!pergunta){
@@ -145,7 +149,7 @@ exports.byExame = function(req, res) {
 
 			// // summary
 			// doc.execPopulate()
-			res.json(pergunta);
+			res.jsonp(pergunta);
 		}
 	});
 };
@@ -155,6 +159,7 @@ exports.byExame = function(req, res) {
  * Update a Pergunta
  */
 exports.update = function(req, res) {
+			console.log('AT create');
 	var pergunta = req.pergunta ;
 
 	pergunta = _.extend(pergunta , req.body);
@@ -172,11 +177,12 @@ exports.update = function(req, res) {
 
 
 exports.listar = function(req, res) {
-
-Pergunta.find().select('id texto').exec(function (err,perguntas) {
+console.log(req.params.id);
+Pergunta.find({'_exame':req.params.id}).populate('_alternativas ').populate(' _ajudas ').exec(function (err,perguntas) {
 	// body...
+	console.log(err);
 	if(err){
-		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+		return res.status(404).send({message:errorHandler.getErrorMessage(err)});
 	}
 	else{
 		res.json(perguntas);

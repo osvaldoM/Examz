@@ -9,18 +9,28 @@ module.exports = function(app) {
 		.get(perguntas.list)
 		.post(users.requiresLogin, perguntas.create);
 
-		app.route('/perguntas/listar')
+		app.route('/perguntas/byExame/:id')
 		.get(perguntas.listar);
 
+
+	app.get('byExame',function(req,res,next){
+	 		console.log('parametro eh :'+req.query.perguntaId);
+	 		perguntas.byExame(req,res);
+	 	});
+		
+
 	app.route('/perguntas/:perguntaId')
-		.get(perguntas.read)
+		.get(function(req,res,next){
+			if(req.params.perguntaId==='byExame')
+				perguntas.listar(req,res);
+			else
+			perguntas.read(req,res); 
+		})
 		.put(users.requiresLogin, perguntas.hasAuthorization, perguntas.update)
 		.delete(users.requiresLogin, perguntas.hasAuthorization, perguntas.delete);
 
 
 
-	app.route('/perguntas/byExame/:perguntaId')
-		.get(perguntas.byExame);
 
 	// Finish by binding the Pergunta middleware
 	//app.param('perguntaId', perguntas.perguntaByID);

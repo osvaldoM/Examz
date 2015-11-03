@@ -86,7 +86,7 @@ exports.read = function(req, res) {
 			if(!exame){
 				return res.status(404).send({message:'Exame nao encontrado'});
 			}
-			res.json(exame);
+			res.jsonp(exame);
 		}
 	});
 

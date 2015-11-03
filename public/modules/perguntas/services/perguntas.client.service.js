@@ -20,7 +20,7 @@ angular.module('perguntas').factory('Perguntas', ['$resource',
 				      },
 			byExame:{
 					method:'GET',
-					url:'/perguntas/byExame',
+					url:'/perguntas/byExame/',
 					isArray:true,
 						
 			}
