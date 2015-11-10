@@ -76,5 +76,12 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		});
 		    // $scope.exame.perguntas=Perguntas.query();
 		};
+
+			//inicio da resolucao do exame
+
+		$scope.perguntasResolvidas=[{}];
+		$scope.addResolvida= function(Pergunta,alternativa){
+			resolvida={}
+		}
 	}
 ]);

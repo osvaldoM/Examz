@@ -45,7 +45,7 @@
 .img {
  background-image: url('../img/univs.png');
  /*width:640px;
-*/ height:500px;
+*/ height:350px;
  position: relative;
 }
 .txt {
@@ -59,8 +59,43 @@
   color: #ffffff;
 }
 
+.banner{
+  background-image: url('../img/exam1.jpg');
+}
+
+.about{
+  background-color: grey;
+}
     body {
        height:1000px;
-       background-image: url('https://placeimg.com/1720/1280/arch');
+      // background-image: url('https://placeimg.com/1720/1280/arch');
+      //background-image: url('../img/background.jpg');
  
     }
+
+
+    .parallax {
+      position:absolute;
+      left: 0;
+      top: 0;
+    }
+    .photo {
+      background-attachment: fixed;
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      height: 450px;
+      position: relative;
+    }
+    .photo span {
+      bottom: 0;
+      color: white;
+      display: block;
+      left: 50%;
+      margin-left: -640px;
+      font-size: 38px;
+      padding: 10px;
+      position: absolute;
+      text-shadow: 0 2px 0 black, 0 0 10px black;
+      width: 1280px;
+    }
+

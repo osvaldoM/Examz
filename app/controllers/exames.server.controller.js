@@ -26,6 +26,7 @@ exports.create = function(req, res) {
 	});
 };
 
+
 exports.addPergunta= function(exameId,perguntaId){
 
 	Exame.findById(exameId).exec(function(err,exame){
@@ -68,7 +69,7 @@ Exame.find().select('id ano').exec(function (err,exames) {
 		return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 	}
 	else{
-		res.json(exames);
+		res.jsonp(exames);
 	}
 });
 };
@@ -78,7 +79,7 @@ Exame.find().select('id ano').exec(function (err,exames) {
  */
 exports.read = function(req, res) {
 	
-	Exame.findById(req.params.exameId).populate('_perguntas').exec(function(err,exame){
+	Exame.findById(req.params.exameId).populate({path:'_perguntas',model:'Pergunta'}).exec(function(err,exame){
 		if(err){
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 		}
@@ -86,6 +87,16 @@ exports.read = function(req, res) {
 			if(!exame){
 				return res.status(404).send({message:'Exame nao encontrado'});
 			}
+			Exame.populate(exame._perguntas,{
+				path:'_alternativas',
+				model:'Alternativa'},
+				function(err,docs){
+					if(err){
+						return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+					}
+					console.log(docs.toObject())	;
+					exame=docs;
+				})
 			res.jsonp(exame);
 		}
 	});
