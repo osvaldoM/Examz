@@ -15,7 +15,7 @@
 			Posted on
 			<span data-ng-bind="exame.created | date:'mediumDate'"></span>
 			by
-			<span data-ng-bind="exame.user.displayName"></span>
+			<span data-ng-bind="exame.user.displayName"></spanz>
 		</em>
 	</small>
 
@@ -30,7 +30,7 @@
 			            	<span data-ng-bind="pergunta.texto" ></span>
 			        	</div>
 			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="row">
-			               <input type="radio" > 
+			               <input type="radio" data-ng-value="alternativa" > 
 			              <span data-ng-bind="alternativa.conteudo" > </span>
 			        	</div>		
 			        </div>

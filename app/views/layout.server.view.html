@@ -33,7 +33,11 @@
 
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
-
+	<style>
+		body{
+			  background-color: #F5F5F5
+		}
+	</style>
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
@@ -43,7 +47,7 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak">
+<body class="ng-cloak ">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-light navbar-fixed-top navbar-inverse"></header>
 	<br>
 	<section class="content">

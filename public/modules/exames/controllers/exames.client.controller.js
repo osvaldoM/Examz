@@ -5,6 +5,9 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 	function($scope, $stateParams, $location, Authentication, Exames, Disciplinas,Perguntas) {
 		$scope.authentication = Authentication;
 
+		//colocar tempo padrao
+		$scope.tempo=120;
+
 		// Create new Exame
 		$scope.create = function() {
 			// Create new Exame object
@@ -82,6 +85,56 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.perguntasResolvidas=[{}];
 		$scope.addResolvida= function(Pergunta,alternativa){
 			resolvida={};
+		};
+
+
+		//clear fields
+		$scope.limpaCampos=function(){
+			$scope.instruccoes='';
+			$scope.disciplina='';
+		}
+
+		//Year Picker action
+		$scope.today = function() {
+		  $scope.dt = new Date();
+		};
+		$scope.today();
+
+		$scope.clear = function () {
+		  $scope.dt = null;
+		};
+
+		// Disable weekend selection
+		$scope.disabled = function(date, mode) {
+		  return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+		};
+
+		$scope.toggleMin = function() {
+		  $scope.minDate = $scope.minDate ? null : new Date();
+		};
+		//$scope.toggleMin();
+
+		$scope.open = function($event) {
+		  $event.preventDefault();
+		  $event.stopPropagation();
+
+		  $scope.opened = true;
+		};
+
+
+
+		$scope.initDate = new Date();
+		$scope.formats = ['yyyy','dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = $scope.formats[0];
+
+		$scope.datepickerOptions = {
+		  datepickerMode:"'year'",
+		  minMode:"'year'",
+		  minDate:"minDate",
+		  showWeeks:"false",
+		  clearText:"limpar",
+		  currentText:"hoje",
+		  closeText:"fechar"
 		};
 	}
 ]);

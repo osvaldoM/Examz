@@ -8,7 +8,10 @@
                 <div class="form-group">
                     <label class="control-label" for="tipo">tipo</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="tipo" id="tipo" class="form-control" placeholder="tipo" required>
+                        <select data-ng-model="tipo" id="tipo" class="form-control" placeholder="tipo" required>
+                            <option value="pagina">p&aacute;gina</option>
+                            <option value="video"> video</option>
+                        </select>
                     </div>
                 </div>
 
@@ -16,7 +19,7 @@
                  <div class="form-group">
                     <label class="control-label" for="titulo">titulo</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="titulo" id="titulo" class="form-control" placeholder="titulo" required>
+                        <input type="text" data-ng-model="titulo" id="titulo" class="form-control" required>
                     </div>
                 </div>
 
