@@ -88,16 +88,26 @@ exports.read = function(req, res) {
 				return res.status(404).send({message:'Exame nao encontrado'});
 			}
 			Exame.populate(exame._perguntas,{
+				path:'_ajuda',
+				model:'Ajuda'},
+				function(err,docs){
+					if(err){
+						return res.status(400).send({message:errorHandler.getErrorMessage(err)});
+					}
+					exame._ajuda=docs;
+				});
+			Exame.populate(exame._perguntas,{
 				path:'_alternativas',
 				model:'Alternativa'},
 				function(err,docs){
 					if(err){
 						return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 					}
-					console.log(docs.toObject())	;
-					exame=docs;
+					console.log(docs.toObject());
+					exame._perguntas=docs;
+					res.jsonp(exame) //exame=docs;
 				})
-			res.jsonp(exame);
+			//res.jsonp(exame);
 		}
 	});
 
