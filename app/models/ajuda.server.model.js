@@ -17,6 +17,13 @@ var AjudaSchema = new Schema({
 		trim: true
 	},
 
+	conteudo: {
+		type: String,
+		default: '',
+		//required: 'Please fill Ajuda conteudo',
+		trim: true
+	},
+
 	titulo: {
 		type: String,
 		default: '',

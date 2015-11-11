@@ -11,6 +11,7 @@ angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams
 			var ajuda = new Ajudas ({
 				tipo: this.tipo,
 				titulo: this.titulo,
+				conteudo: this.conteudo,
 				_pergunta:this.pergunta._id
 			});
 

@@ -32,6 +32,7 @@ describe('Ajuda Model Unit Tests:', function() {
 			ajuda = new Ajuda({
 				tipo: 'Ajuda tipo',
 				titulo: 'Ajuda titulo',
+				conteudo: 'Ajuda conteudo',
 				pergunta: pergunta,
 
 				user: user
