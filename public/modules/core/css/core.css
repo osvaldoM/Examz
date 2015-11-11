@@ -99,3 +99,20 @@
       width: 1280px;
     }
 
+    .food {
+      background-image: url(../img/univs.png);
+    }
+    .cats {
+      background-image: url(../img/univs.png);
+    }
+    .animals {
+      background-image: url(../img/univs.png);
+    }
+    .nature {
+      background-image: url(../img/univs.png);
+    }
+
+    body:after {
+  content: url(../images/animals.jpg) url(../images/nature.jpg) url(../images/cats.jpg) url(../images/food.jpg) url(../images/muther.jpg);
+  display: none;
+}
