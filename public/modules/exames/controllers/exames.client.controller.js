@@ -69,12 +69,19 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			$scope.exame = Exames.get({ 
 				exameId: $stateParams.exameId
 			});
-		console.log('id da pergunta '+$scope.exame._id);
-		$scope.exame.perguntas=Perguntas.byExame({
-			//console.log('id pergunta '+$scope.exame._id);
-			perguntaId:'562679b05cea858510e475e5'
-		});
+		// console.log('id da pergunta '+$scope.exame._id);
+		// $scope.exame.perguntas=Perguntas.byExame({
+		// 	//console.log('id pergunta '+$scope.exame._id);
+		// 	perguntaId:'562679b05cea858510e475e5'
+		// });
 		    // $scope.exame.perguntas=Perguntas.query();
+		};
+
+			//inicio da resolucao do exame
+
+		$scope.perguntasResolvidas=[{}];
+		$scope.addResolvida= function(Pergunta,alternativa){
+			resolvida={};
 		};
 	}
 ]);

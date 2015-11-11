@@ -18,4 +18,24 @@
 			<span data-ng-bind="exame.user.displayName"></span>
 		</em>
 	</small>
+
+<div class="row">
+	<div  class="panel panel-primary">
+		<div class="panel-heading">
+		<span data-ng-bind="exame.ano"></span>	<span data-ng-bind="exame.instruccoes"></span>
+		</div>
+			    <div data-ng-repeat="pergunta in exame._perguntas" class="row">	        	          
+			        <div class="panel-body">
+			        	<div class="row panel">
+			            	<span data-ng-bind="pergunta.texto" ></span>
+			        	</div>
+			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="row">
+			               <input type="radio" > 
+			              <span data-ng-bind="alternativa.conteudo" > </span>
+			        	</div>		
+			        </div>
+			    </div>
+	</div>
+
+</div
 </section>
