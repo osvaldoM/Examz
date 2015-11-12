@@ -79,7 +79,7 @@ Exame.find().select('id ano').exec(function (err,exames) {
  */
 exports.read = function(req, res) {
 	
-	Exame.findById(req.params.exameId).populate({path:'_perguntas',model:'Pergunta'}).exec(function(err,exame){
+	Exame.findById(req.params.exameId).populate({path:'_perguntas',model:'Pergunta'}).populate('disciplina').exec(function(err,exame){
 		if(err){
 			return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 		}

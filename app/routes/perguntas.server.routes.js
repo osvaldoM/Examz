@@ -9,23 +9,13 @@ module.exports = function(app) {
 		.get(perguntas.list)
 		.post(users.requiresLogin, perguntas.create);
 
-		app.route('/perguntas/byExame/:id')
+	app.route('/perguntas/listar')
 		.get(perguntas.listar);
 
-
-	app.get('byExame',function(req,res,next){
-	 		console.log('parametro eh :'+req.query.perguntaId);
-	 		perguntas.byExame(req,res);
-	 	});
 		
 
 	app.route('/perguntas/:perguntaId')
-		.get(function(req,res,next){
-			if(req.params.perguntaId==='byExame')
-				perguntas.listar(req,res);
-			else
-			perguntas.read(req,res); 
-		})
+		.get(perguntas.read) 
 		.put(users.requiresLogin, perguntas.hasAuthorization, perguntas.update)
 		.delete(users.requiresLogin, perguntas.hasAuthorization, perguntas.delete);
 

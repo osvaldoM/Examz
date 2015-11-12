@@ -177,8 +177,8 @@ exports.update = function(req, res) {
 
 
 exports.listar = function(req, res) {
-console.log(req.params.id);
-Pergunta.find({'_exame':req.params.id}).populate('_alternativas ').populate(' _ajudas ').exec(function (err,perguntas) {
+console.log('at listar');
+Pergunta.find().select('id texto').exec(function (err,perguntas) {
 	// body...
 	console.log(err);
 	if(err){

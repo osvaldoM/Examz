@@ -17,13 +17,7 @@ angular.module('perguntas').factory('Perguntas', ['$resource',
 				      	url:'/perguntas/listar',
 				      	isArray:true
 
-				      },
-			byExame:{
-					method:'GET',
-					url:'/perguntas/byExame/',
-					isArray:true,
-						
-			}
+				      }
 		});
 	}
 ]);

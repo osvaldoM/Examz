@@ -69,5 +69,9 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 				perguntaId: $stateParams.perguntaId
 			});
 		};
+		//direct to create
+		$scope.direct= function(){
+			$location.path('perguntas/create');
+		}
 	}
 ]);
