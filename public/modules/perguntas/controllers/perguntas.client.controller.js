@@ -43,7 +43,8 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		};
 
 
-            $scope.listaExames=function(){
+		// function that returns list of exams
+        $scope.listaExames=function(){
 			$scope.exames=Exames.listar();
 			};
 

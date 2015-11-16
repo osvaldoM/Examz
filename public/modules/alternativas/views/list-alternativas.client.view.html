@@ -4,15 +4,14 @@
         <button class="btn btn-success pull-right" data-ng-click="direct()"><span class="glyphicon glyphicon-plus"></span> Nova Alternativas </button>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="alternativa in alternativas | groupBy:'pergunta'" data-ng-href="#!/alternativas/{{alternativa._id}}" class="list-group-item">
-
+        <a data-ng-repeat="alternativa in alternativas  | orderBy:'alternativa.conteudo'" data-ng-href="#!/alternativas/{{alternativa._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="alternativa.created | date:'medium'"></span>
 				by
 				<span data-ng-bind="alternativa.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="alternativa.name"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="alternativa.conteudo"></h4>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!alternativas.$resolved || alternativas.length">
