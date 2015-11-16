@@ -24,6 +24,7 @@
 	<div  class="panel panel-primary">
 		<div class="panel-heading">
 		<span data-ng-bind="exame.disciplina.name"></span> <span data-ng-bind="exame.ano"></span>	<span data-ng-bind="exame.instruccoes"></span>
+		<a class="pull-right" data-ng-href="#!/exames/edit/{{exame._id}}"> editar</a>
 		</div>
 			    <div data-ng-repeat="pergunta in exame._perguntas" class="row">	        	          
 			        <div class="panel-body">

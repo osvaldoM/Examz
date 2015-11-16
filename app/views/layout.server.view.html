@@ -48,26 +48,28 @@
 </head>
 
 <body class="ng-cloak ">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-light navbar-fixed-top navbar-inverse"></header>
-	<br>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
+	<div ui-view>
+		<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-light navbar-fixed-top navbar-inverse"></header>
+		<br>
+		<section class="content">
+			<section class="container">
+				{% block content %}{% endblock %}
+			</section>
 		</section>
-	</section>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+		<!--Embedding The User Object-->
+		<script type="text/javascript">
+			var user = {{ user | json | safe }};
+		</script>
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
+		<!--Application JavaScript Files-->
+		{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
 
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
-	{% endif %}
+		{% if process.env.NODE_ENV === 'development' %}
+		<!--Livereload script rendered -->
+		<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
+		{% endif %}
+	</div>
 </body>
 
 </html>
