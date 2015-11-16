@@ -72,6 +72,6 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		//direct to create
 		$scope.direct= function(){
 			$location.path('perguntas/create');
-		}
+		};
 	}
 ]);

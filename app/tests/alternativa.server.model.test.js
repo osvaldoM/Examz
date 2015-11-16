@@ -33,7 +33,7 @@ describe('Alternativa Model Unit Tests:', function() {
 				conteudo: 'Alternativa Conteudo',
 				isCorrect: 'Alternativa isCorrect',
 				letra: 'Alternativa letra',
-				imagen: 'Alternativa  imagen',
+				imagem: 'Alternativa  imagem',
 				user: user,
 				Pergunta: Pergunta
 			});

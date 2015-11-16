@@ -13,20 +13,25 @@ angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams
 				titulo: this.titulo,
 				conteudo: this.conteudo,
 				_pergunta:this.pergunta._id
+
+			
 			});
 
 			// Redirect after save
 			ajuda.$save(function(response) {
-				$location.path('ajudas/' + response._id);
+				
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.tipo = '';
+				$scope.titulo='';
+				$scope.conteudo='';
+
+
+				$location.path('ajudas/create');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
-
-		
+		};	
             $scope.listPerguntas=function(){
 			$scope.perguntas=Perguntas.listar();
 			};
@@ -69,6 +74,11 @@ angular.module('ajudas').controller('AjudasController', ['$scope', '$stateParams
 			$scope.ajuda = Ajudas.get({ 
 				ajudaId: $stateParams.ajudaId
 			});
+		};
+		$scope.direct= function(){
+			$location.path('ajudas/create');
+
+
 		};
 	}
 ]);

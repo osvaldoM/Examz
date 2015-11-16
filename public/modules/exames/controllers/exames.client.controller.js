@@ -20,10 +20,14 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 
 			// Redirect after save
 			exame.$save(function(response) {
-				$location.path('exames/' + response._id);
+				
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.ano = '';
+				$scope.instruccoes='';
+				$scope.disciplina='-- Escolher disciplina --';
+
+				$location.path('exames/create');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -92,7 +96,8 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.limpaCampos=function(){
 			$scope.instruccoes='';
 			$scope.disciplina='';
-		}
+			disciplina:'-- Escolher disciplina --';
+		};
 
 		//Year Picker action
 		$scope.today = function() {
@@ -135,6 +140,12 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		  clearText:"limpar",
 		  currentText:"hoje",
 		  closeText:"fechar"
+		};
+
+
+		//direct to create
+		$scope.direct= function(){
+			$location.path('exames/create');
 		};
 	}
 ]);

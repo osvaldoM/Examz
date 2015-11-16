@@ -15,10 +15,14 @@ angular.module('disciplinas').controller('DisciplinasController', ['$scope', '$s
 
 			// Redirect after save
 			disciplina.$save(function(response) {
-				$location.path('disciplinas/' + response._id);
+				
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.plano='';
+
+				$location.path('disciplinas/' + response._id);
+				
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -62,6 +66,11 @@ angular.module('disciplinas').controller('DisciplinasController', ['$scope', '$s
 			$scope.disciplina = Disciplinas.get({ 
 				disciplinaId: $stateParams.disciplinaId
 			});
+		};
+
+		//direct to create
+		$scope.direct= function(){
+			$location.path('disciplinas/create');
 		};
 	}
 ]);
