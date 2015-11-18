@@ -105,8 +105,8 @@ exports.read = function(req, res) {
 					}
 					console.log(docs.toObject());
 					exame._perguntas=docs;
-					res.jsonp(exame) //exame=docs;
-				})
+					res.jsonp(exame); //exame=docs;
+				});
 			//res.jsonp(exame);
 		}
 	});

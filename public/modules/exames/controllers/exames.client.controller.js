@@ -11,12 +11,6 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		// Create new Exame
 		$scope.create = function() {
 			// Create new Exame object
-			var exame = new Exames ({
-				ano: this.ano,
-				instruccoes:this.instruccoes,
-				tempo:this.tempo,
-				disciplina:this.disciplina._id
-			});
 
 			// Redirect after save
 			exame.$save(function(response) {
@@ -136,5 +130,22 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		  currentText:"hoje",
 		  closeText:"fechar"
 		};
+
+		$scope.resolver= function(){
+			var perguntas=$scope.exame._perguntas;
+			console.log(perguntas);
+			 for(var i=0;i<perguntas.length;i++){
+			 	//if(i.hasOwnProperty(perguntas))
+			 		console.log('id '+perguntas[i]._id);
+			var pergunt+'gfffffffff' =5;
+			console.log(pergunta+perguntas[i]._id);
+		}
+			// var exame = new Exames ({
+			// 	ano: this.ano,
+			// 	instruccoes:this.instruccoes,
+			// 	tempo:this.tempo,
+			// 	disciplina:this.disciplina._id
+			// });
+		}
 	}
 ]);

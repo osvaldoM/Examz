@@ -15,12 +15,12 @@
 			Posted on
 			<span data-ng-bind="exame.created | date:'mediumDate'"></span>
 			by
-			<span data-ng-bind="exame.user.displayName"></spanz>
+			<span data-ng-bind="exame.user.displayName"></span>
 		</em>
 	</small>
 
 <div class="row">
-	<form>
+	<form data-ng-submit="resolver()">
 	<div  class="panel panel-primary">
 		<div class="panel-heading">
 		<span data-ng-bind="exame.disciplina.name"></span> <span data-ng-bind="exame.ano"></span>	<span data-ng-bind="exame.instruccoes"></span>
@@ -32,7 +32,7 @@
 			            	<span data-ng-bind="pergunta.texto" ></span>
 			        	</div>
 			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-			               <input type="radio" data-ng-value="alternativa.id" > 
+			               <input type="radio" name={{pergunta._id}} data-ng-value="alternativa.id" > 
 			              <span data-ng-bind="alternativa.conteudo" > </span>
 			        	</div>		
 			        </div>
