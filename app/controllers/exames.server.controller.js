@@ -181,7 +181,7 @@ exports.list = function(req, res) {
 
 /**
  * Exame authorization middleware
- */
+ */ 
 exports.hasAuthorization = function(req, res, next) {
 	if (req.exame.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
