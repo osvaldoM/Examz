@@ -132,13 +132,19 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		};
 
 		$scope.resolver= function(){
+			console.log('radio'+this.a56442ea899f1c3e81f385ec8);
 			var perguntas=$scope.exame._perguntas;
 			console.log(perguntas);
+			var obj={};
 			 for(var i=0;i<perguntas.length;i++){
 			 	//if(i.hasOwnProperty(perguntas))
 			 		console.log('id '+perguntas[i]._id);
-			var pergunt+'gfffffffff' =5;
-			console.log(pergunta+perguntas[i]._id);
+			//added 'a' to the  begining of the name for each property to avoid name begining with numerical literal
+			eval("obj.a"+perguntas[i]._id+" ="+"this.a"+perguntas[i]._id+";");  //
+			console.log(obj);
+			//pergunta=2;
+			//console.log(pergunta+perguntas[i]._id);
+			//console.log(perguntag);
 		}
 			// var exame = new Exames ({
 			// 	ano: this.ano,

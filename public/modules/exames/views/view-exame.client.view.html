@@ -29,11 +29,12 @@
 			    <div data-ng-repeat="pergunta in exame._perguntas" class="row">	        	          
 			        <div class="panel-body">
 			        	<div class="ro panel">
-			            	<span data-ng-bind="pergunta.texto" ></span>
+			            	<span data-ng-bind="pergunta.texto" ></span> {{5+3}}
 			        	</div>
 			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-			               <input type="radio" name={{pergunta._id}} data-ng-value="alternativa.id" > 
-			              <span data-ng-bind="alternativa.conteudo" > </span>
+			               <input type="radio" data-ng-model="obj[pergunta._id]" name={{"a"+pergunta._id}} data-ng-value="alternativa.id" > 
+			              <span data-ng-bind="alternativa.conteudo" >  </span>
+			              <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
 			        	</div>		
 			        </div>
 			    </div>
@@ -42,5 +43,23 @@
 	<button type="submit" class="btn btn-primary"> submeter</button>
 	</form>
 
-</div
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal! </h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+            </li>
+        </ul>
+        Selected: <b>{{ selected.item }}</b>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
 </section>
