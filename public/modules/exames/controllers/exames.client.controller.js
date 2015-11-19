@@ -116,7 +116,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		};
 
 
+       $scope.direct= function(){
+			$location.path('exames/create');
 
+
+		};
+
+		
 		$scope.initDate = new Date();
 		$scope.formats = ['yyyy','dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];

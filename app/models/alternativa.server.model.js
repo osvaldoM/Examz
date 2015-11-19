@@ -29,7 +29,7 @@ var AlternativaSchema = new Schema({
 		//required: 'Please fill Alternativa letra',
 		trim: true
 	},
-	imagen: {
+	imagem: {
 		type: String,
 		default: '',
 		//required: 'Please fill Alternativa imagen',

@@ -14,10 +14,12 @@ angular.module('cursos').controller('CursosController', ['$scope', '$stateParams
 
 			// Redirect after save
 			curso.$save(function(response) {
-				$location.path('cursos/' + response._id);
+				
 
 				// Clear form fields
 				$scope.designacao = '';
+
+				$location.path('cursos/create');
 			
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;

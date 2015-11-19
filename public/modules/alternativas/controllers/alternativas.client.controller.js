@@ -12,7 +12,7 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 				conteudo: this.conteudo,
 				isCorrecte: this.isCorrecte,
 				letra: this.letra,
-				imagen: this.imagen,
+				imagem: this.imagem,
 				pergunta: this.pergunta._id
 				//pergunta: 'primeiro nome?'
 
@@ -20,10 +20,16 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 
 			// Redirect after save
 			alternativa.$save(function(response) {
-				$location.path('alternativas/' + response._id);
+				
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.conteudo = '';
+				$scope.isCorrecte = '';
+				$scope.letra = '';
+				$scope.imagem = '';
+
+				$location.path('alternativas/create');
+				
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -76,6 +82,10 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 			$scope.alternativa = Alternativas.get({ 
 				alternativaId: $stateParams.alternativaId
 			});
+		};
+
+		$scope.direct= function(){
+			$location.path('alternativas/create');
 		};
 	}
 ]);
