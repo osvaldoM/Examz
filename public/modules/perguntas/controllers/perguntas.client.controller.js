@@ -16,10 +16,11 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 
 			// Redirect after save
 			pergunta.$save(function(response) {
-				$location.path('perguntas/' + response._id);
+				
 
 				// Clear form fields
 				$scope.texto = '';
+				$location.path('perguntas/create');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
