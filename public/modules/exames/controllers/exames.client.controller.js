@@ -11,23 +11,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		// Create new Exame
 		$scope.create = function() {
 			// Create new Exame object
-			var exame = new Exames ({
-				ano: this.ano,
-				instruccoes:this.instruccoes,
-				tempo:this.tempo,
-				disciplina:this.disciplina._id
-			});
 
 			// Redirect after save
 			exame.$save(function(response) {
-				
+				$location.path('exames/' + response._id);
 
 				// Clear form fields
-				$scope.ano = '';
-				$scope.instruccoes='';
-				$scope.disciplina='-- Escolher disciplina --';
-
-				$location.path('exames/create');
+				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -96,8 +86,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.limpaCampos=function(){
 			$scope.instruccoes='';
 			$scope.disciplina='';
-			disciplina:'-- Escolher disciplina --';
-		};
+		}
 
 		//Year Picker action
 		$scope.today = function() {
@@ -127,7 +116,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		};
 
 
+       $scope.direct= function(){
+			$location.path('exames/create');
 
+
+		};
+
+		
 		$scope.initDate = new Date();
 		$scope.formats = ['yyyy','dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
@@ -142,10 +137,21 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		  closeText:"fechar"
 		};
 
-
-		//direct to create
-		$scope.direct= function(){
-			$location.path('exames/create');
-		};
+		$scope.resolver= function(){
+			var perguntas=$scope.exame._perguntas;
+			console.log(perguntas);
+			 for(var i=0;i<perguntas.length;i++){
+			 	//if(i.hasOwnProperty(perguntas))
+			 		console.log('id '+perguntas[i]._id);
+			var pergunt+'gfffffffff' =5;
+			console.log(pergunta+perguntas[i]._id);
+		}
+			// var exame = new Exames ({
+			// 	ano: this.ano,
+			// 	instruccoes:this.instruccoes,
+			// 	tempo:this.tempo,
+			// 	disciplina:this.disciplina._id
+			// });
+		}
 	}
 ]);
