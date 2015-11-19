@@ -34,7 +34,7 @@
   margin-bottom: 0px;
   height: 350px;
   color: white;
-  text-shadow: black 0.3em 0.3em 0.3em;
+  /*text-shadow: black 0.3em 0.3em 0.3em;*/
   background:transparent;
 }
 
@@ -46,6 +46,13 @@
  background-image: url('../img/univs.png');
  /*width:640px;
 */ height:350px;
+ position: relative;
+}
+
+.simplificando {
+ background-image: url('../img/simplificando.jpg');
+ /*width:1240px;*/
+ height:695px;
  position: relative;
 }
 .txt {
@@ -60,7 +67,7 @@
 }
 
 .banner{
-  background-image: url('../img/exam1.jpg');
+  background-image: url('../img/image01.jpg');
 }
 
 .about{
