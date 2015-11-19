@@ -32,10 +32,10 @@
 			            	<span data-ng-bind="pergunta.texto" ></span> {{5+3}}
 			        	</div>
 			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-			               <input type="radio" data-ng-model="obj[pergunta._id]" name={{"a"+pergunta._id}} data-ng-value="alternativa.id" > 
+			               <input type="radio"  name={{"a"+pergunta._id}} data-ng-value="alternativa.id" > 
 			              <span data-ng-bind="alternativa.conteudo" >  </span>
-			              <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
-			        	</div>		
+			        	</div>
+			        	<button type="button" class="btn btn-success" ng-click="open('lg')">Ajuda</button>		
 			        </div>
 			    </div>
 	</div>

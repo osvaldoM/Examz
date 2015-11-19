@@ -74,6 +74,31 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		    // $scope.exame.perguntas=Perguntas.query();
 		};
 
+		//modal
+
+		$scope.animationsEnabled = true;
+
+		$scope.open = function (size) {
+
+		  var modalInstance = $uibModal.open({
+		    animation: $scope.animationsEnabled,
+		    templateUrl: 'myModalContent.html',
+		    //controller: 'ModalInstanceCtrl',
+		    size: size,
+		    resolve: {
+		      items: function () {
+		       // return $scope.items;
+		      }
+		    }
+		  });
+
+		  modalInstance.result.then(function () {
+		   // $scope.selected = selectedItem;
+		  }, function () {
+		    $log.info('Modal dismissed at: ' + new Date());
+		  });
+		};
+		//end of modal
 			//inicio da resolucao do exame
 
 		$scope.perguntasResolvidas=[{}];
