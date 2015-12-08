@@ -29,10 +29,10 @@
 			    <div data-ng-repeat="pergunta in exame._perguntas" class="row">	        	          
 			        <div class="panel-body">
 			        	<div class="ro panel">
-			            	<span data-ng-bind="pergunta.texto" ></span> {{5+3}}
+			            	<span data-ng-bind="pergunta.texto" ></span>
 			        	</div>
 			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-			               <input type="radio"  name={{"a"+pergunta._id}} data-ng-value="alternativa.id" > 
+			               <input type="radio" data-ng-name={{"a"+pergunta._id}} name=data-ng-bind="'a'+pergunta._id" data-ng-value="alternativa.id" > 
 			              <span data-ng-bind="alternativa.conteudo" >  </span>
 			        	</div>
 			        	<button type="button" class="btn btn-success" ng-click="open('lg')">Ajuda</button>		
@@ -45,9 +45,9 @@
 
 </div>
 
-<script type="text/ng-template" id="myModalContent.html">
+<!--<script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header">
-        <h3 class="modal-title">I'm a modal! </h3>
+        <h3 class="modal-title"> Im a modal! </h3>
     </div>
     <div class="modal-body">
         <ul>
@@ -61,5 +61,5 @@
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
-</script>
+ </script> -->
 </section>

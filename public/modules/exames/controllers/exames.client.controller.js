@@ -1,8 +1,8 @@
 'use strict';
 
 // Exames controller
-angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exames','Disciplinas','Perguntas',
-	function($scope, $stateParams, $location, Authentication, Exames, Disciplinas,Perguntas) {
+angular.module('exames').controller('ExamesController', ['$scope', '$stateParams', '$log', '$location', 'Authentication', 'Exames','Disciplinas','Perguntas',
+	function($scope, $stateParams, $location, $log, Authentication, Exames, Disciplinas,Perguntas) {
 		$scope.authentication = Authentication;
 
 		//colocar tempo padrao

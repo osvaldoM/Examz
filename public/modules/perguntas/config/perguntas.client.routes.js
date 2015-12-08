@@ -19,7 +19,7 @@ angular.module('perguntas').config(['$stateProvider',
 		}).
 		state('editPergunta', {
 			url: '/perguntas/:perguntaId/edit',
-			templateUrl: 'modules/perguntas/views/view-pergunta.client.view.html'
+			templateUrl: 'modules/perguntas/views/edit-pergunta.client.view.html'
 		});
 	}
 ]);

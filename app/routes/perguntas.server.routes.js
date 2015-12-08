@@ -16,7 +16,7 @@ module.exports = function(app) {
 
 	app.route('/perguntas/:perguntaId')
 		.get(perguntas.read) 
-		.put(users.requiresLogin, perguntas.hasAuthorization, perguntas.update)
+		.put( perguntas.update)
 		.delete(users.requiresLogin, perguntas.hasAuthorization, perguntas.delete);
 
 

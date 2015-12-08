@@ -159,7 +159,7 @@ exports.byExame = function(req, res) {
  * Update a Pergunta
  */
 exports.update = function(req, res) {
-			console.log('AT create');
+			console.log('AT update');
 	var pergunta = req.pergunta ;
 
 	pergunta = _.extend(pergunta , req.body);

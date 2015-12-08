@@ -16,10 +16,11 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 
 			// Redirect after save
 			pergunta.$save(function(response) {
-				$location.path('perguntas/' + response._id);
+				
 
 				// Clear form fields
 				$scope.texto = '';
+				$location.path('perguntas/create');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -66,10 +67,16 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 
 		// Find existing Pergunta
 		$scope.findOne = function() {
+			console.log('got ');
 			$scope.pergunta = Perguntas.get({ 
 				perguntaId: $stateParams.perguntaId
 			});
 		};
+
+		$scope.callFunctions= function(){
+			$scope.findOne();
+			$scope.listaExames();
+		}
 		//direct to create
 		$scope.direct= function(){
 			$location.path('perguntas/create');
