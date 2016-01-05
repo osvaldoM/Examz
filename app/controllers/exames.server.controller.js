@@ -36,7 +36,7 @@ exports.addPergunta= function(exameId,perguntaId){
 		}
 		else{
 			if(!exame){
-			console.log('exam not found'+exameId);
+		//	console.log('exam not found'+exameId);
 			return;
 			}
 			var exame1=exame.toObject();
@@ -45,11 +45,11 @@ exports.addPergunta= function(exameId,perguntaId){
 
 			exame.save(function(err) {
 				if (err) {
-					console.log('erro ao salvar');
+					//console.log('erro ao salvar');
 					return; 
 					
 				} else {
-					console.log('sucesso');
+					//console.log('sucesso');
 				}
 			});
 
@@ -103,8 +103,8 @@ exports.read = function(req, res) {
 					if(err){
 						return res.status(400).send({message:errorHandler.getErrorMessage(err)});
 					}
-					console.log(docs.toObject());
-					exame._perguntas=docs;
+					// console.log(docs.toObject());
+					// exame._perguntas=docs;
 					res.jsonp(exame); //exame=docs;
 				});
 			//res.jsonp(exame);

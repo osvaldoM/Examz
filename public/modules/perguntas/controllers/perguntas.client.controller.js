@@ -66,8 +66,16 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		};
 
 		// Find existing Pergunta
+		$scope.findOneOrigi = function() {
+			$scope.pergunta = Perguntas.getOrigi({ 
+				pergunta: $stateParams.perguntaId
+			});
+		};
+
+
+		// Find an existing Pergunta without population from the back end
+		//still need to understand how the get method implementation works in order to pass the parameter
 		$scope.findOne = function() {
-			console.log('got ');
 			$scope.pergunta = Perguntas.get({ 
 				perguntaId: $stateParams.perguntaId
 			});

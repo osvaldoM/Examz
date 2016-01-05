@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
  * Create a Pergunta
  */
 exports.create = function(req, res) {
-		console.log('AT create');
+		// console.log('AT create');
 	var pergunta = new Pergunta(req.body);
 	pergunta.user = req.user;
 	var exame=pergunta._exame;
@@ -98,9 +98,11 @@ exports.addAjuda=function(perguntaId,ajudaId){
  * Show the current Pergunta
  */
 exports.read = function(req, res) {
-			console.log('AT read '+req.params.perguntaId);
+			// console.log('AT read '+req.params.perguntaId);
+			//removed populating options for testing purposes.. but ill find them here
+//	Pergunta.findById(req.params.perguntaId).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
 
-	Pergunta.findById(req.params.perguntaId).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
+	Pergunta.findById(req.params.perguntaId).exec(function(err,pergunta){
 		if(err){
 			res.status(201).send({message:errorHandler.getErrorMessage(err)});
 		}
@@ -126,8 +128,27 @@ exports.read = function(req, res) {
 	});
 };
 
+//returns an asked pergunta without population
+exports.readOrigi = function(req, res) {
+			// console.log('AT read '+req.params.perguntaId);
+			console.log("id eh "+req.query.perguntaId);
+
+	// Pergunta.findById(req.query.perguntaId).exec(function(err,pergunta){
+	// 	if(err){
+	// 		res.status(201).send({message:errorHandler.getErrorMessage(err)});
+	// 	}
+	// 	else{
+	// 	if(!pergunta){
+	// 		res.status(404).send({message:'Pergunta nao encontrada'});
+	// 		}
+	// 		res.json(pergunta);
+	// 	}
+	// });
+res.json("ola");
+};
+
 exports.byExame = function(req, res) {
-	console.log('AT SEARCHBYID');
+	// console.log('AT SEARCHBYID');
 	Pergunta.find({'_exame':req.params.perguntaId}).populate('_alternativas  _ajudas ').populate({path:'_alternativas.user',model:'User'}).exec(function(err,pergunta){
 		if(err){
 			res.status(202).send({message:errorHandler.getErrorMessage(err)});
@@ -159,8 +180,8 @@ exports.byExame = function(req, res) {
  * Update a Pergunta
  */
 exports.update = function(req, res) {
-			console.log('AT update');
 	var pergunta = req.pergunta ;
+	console.log('AT update:'+pergunta);
 
 	pergunta = _.extend(pergunta , req.body);
 
@@ -222,20 +243,20 @@ exports.list = function(req, res) {
 };
 
 
-exports.list = function(req, res) { 
-	Pergunta.find().sort('-created').populate('user', 'displayName').exec(function(err, perguntas) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(perguntas);
-		}
-	});
-};
+// exports.list = function(req, res) { 
+// 	Pergunta.find().sort('-created').populate('user', 'displayName').exec(function(err, perguntas) {
+// 		if (err) {
+// 			return res.status(400).send({
+// 				message: errorHandler.getErrorMessage(err)
+// 			});
+// 		} else {
+// 			res.jsonp(perguntas);
+// 		}
+// 	});
+// };
 
 /**
- * Pergunta middleware
+ * Pergunta middleware (used when updating)
  */
 exports.perguntaByID = function(req, res, next, id) { 
 	Pergunta.findById(id).populate('user', 'displayName').exec(function(err, pergunta) {

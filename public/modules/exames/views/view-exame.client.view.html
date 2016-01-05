@@ -1,3 +1,9 @@
+<style >
+.panel-body{
+    padding: 25px;
+}
+</style>
+
 <section data-ng-controller="ExamesController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="exame.name"></h1>
@@ -24,18 +30,21 @@
 	<div  class="panel panel-primary">
 		<div class="panel-heading">
 		<span data-ng-bind="exame.disciplina.name"></span> <span data-ng-bind="exame.ano"></span>	<span data-ng-bind="exame.instruccoes"></span>
-		<a class="pull-right" data-ng-href="#!/exames/edit/{{exame._id}}"> editar</a>
+		<a class="pull-right" data-ng-href="#!/exames/edit/{{exame._id}}" style="color:white"> editar <i class="glyphicon glyphicon-edit"></i></a>
 		</div>
 			    <div data-ng-repeat="pergunta in exame._perguntas" class="row">	        	          
 			        <div class="panel-body">
 			        	<div class="ro panel">
 			            	<span data-ng-bind="pergunta.texto" ></span>
 			        	</div>
-			        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-			               <input type="radio" data-ng-name={{"a"+pergunta._id}} name=data-ng-bind="'a'+pergunta._id" data-ng-value="alternativa.id" > 
-			              <span data-ng-bind="alternativa.conteudo" >  </span>
-			        	</div>
-			        	<button type="button" class="btn btn-success" ng-click="open('lg')">Ajuda</button>		
+			        	<div class="col-md-11">
+				        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
+				               <input type="radio" data-ng-name={{"a"+pergunta._id}} name=data-ng-bind="'a'+pergunta._id" data-ng-value="alternativa.id" > 
+				              <span data-ng-bind="alternativa.conteudo" >  </span>
+				        	</div>
+				        	<button type="button" class="btn btn-success" ng-click="open('lg')">?</button>
+				        </div>
+		
 			        </div>
 			    </div>
 	</div>

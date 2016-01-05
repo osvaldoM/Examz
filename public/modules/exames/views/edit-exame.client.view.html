@@ -1,3 +1,9 @@
+<style >
+.panel-body{
+    padding: 25px;
+}
+</style>
+
 <section data-ng-controller="ExamesController" data-ng-init="findOne()">
     <div class="page-header">
         <h1 data-ng-bind="exame.name"></h1>
@@ -23,8 +29,13 @@
     <!-- <form> -->
     <div  class="panel panel-primary">
         <div class="panel-heading">
-        <span data-ng-bind="exame.disciplina.name"></span> <span data-ng-bind="exame.ano"></span>   <span data-ng-bind="exame.instruccoes"></span>
+        <span data-ng-bind="exame.disciplina.name"></span> <span data-ng-bind="exame.ano"></span> <a style="color:white" class="pull-right" href="#!/exames/editData/{{exame._id}}"> editar dados</a> <br>
+          <span data-ng-bind="exame.instruccoes"></span>
         </div>
+        <div class="row">
+            <button class="btn btn-success pull-right" data-ng-click="direct()"><span class="glyphicon glyphicon-plus"></span> Nova pergunta</button>
+        </div>
+
                 <div data-ng-repeat="pergunta in exame._perguntas" class="row">                       
                     <div class="panel-body">
                         <div class="ro panel">
@@ -34,12 +45,17 @@
                             </a> -->
                             <a class="pull-right" data-ng-href="#!/perguntas/{{pergunta._id}}/edit"> editar</a>
                         </div>
-                        <div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-                           <input type="radio" data-ng-value="alternativa.id" > 
-                          <span data-ng-bind="alternativa.conteudo" > </span>
+                        <div class="col-md-11">
+                            <div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
+                               <input type="radio" data-ng-value="alternativa.id" data-ng-name={{pergunta.id}} >
+                               <a class="pull-right" data-ng-href="#!/alternativas/{{alternativa._id}}/edit"> editar</a> 
+                              <span data-ng-bind="alternativa.conteudo" > </span>
+                            </div>
+                            <button class="btn btn-success pull-left" data-ng-click="direct()"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>      
                     </div>
                 </div>
+              
     </div>
     <!-- <div ng-include src='"ajudas/create"'></div> -->
 

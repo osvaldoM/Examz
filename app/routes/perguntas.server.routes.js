@@ -20,8 +20,10 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, perguntas.hasAuthorization, perguntas.delete);
 
 
+	app.route('/perguntasOrigi/:pergunta')
+		.get(perguntas.readOrigi);	
 
-
+		
 	// Finish by binding the Pergunta middleware
-	//app.param('perguntaId', perguntas.perguntaByID);
+	app.param('perguntaId', perguntas.perguntaByID);
 };

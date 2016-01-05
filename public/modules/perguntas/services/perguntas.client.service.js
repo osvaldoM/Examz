@@ -17,6 +17,14 @@ angular.module('perguntas').factory('Perguntas', ['$resource',
 				      	url:'/perguntas/listar',
 				      	isArray:true
 
+				      },
+
+
+			 getOrigi:{
+				      	method:'GET',
+				      	url:'/perguntas/getOrigi',
+				      	isArray:false
+
 				      }
 		});
 	}

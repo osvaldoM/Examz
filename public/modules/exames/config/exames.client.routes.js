@@ -21,6 +21,10 @@ angular.module('exames').config(['$stateProvider',
 		state('editExame', {
 			url: '/exames/edit/:exameId',
 			templateUrl: 'modules/exames/views/edit-exame.client.view.html'
+		}).
+		state('editExameData', {
+			url: '/exames/editData/:exameId',
+			templateUrl: 'modules/exames/views/edit-exame-data.client.view.html'
 		});
 	}
 ]);

@@ -74,6 +74,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		    // $scope.exame.perguntas=Perguntas.query();
 		};
 
+		$scope.callFunctions= function(){
+			$scope.listaDisciplinas();
+			$scope.findOne();
+		};
+
+
+
 		//modal
 
 		$scope.animationsEnabled = true;

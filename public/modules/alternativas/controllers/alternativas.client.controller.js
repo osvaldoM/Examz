@@ -87,5 +87,15 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 		$scope.direct= function(){
 			$location.path('alternativas/create');
 		};
+
+
+
+		$scope.callFunctions= function(){
+			$scope.findOne();
+			//need to call the method to list the perguntas here instead of direct call to service method
+			$scope.perguntas=Perguntas.listar();
+		}
 	}
+
+
 ]);
