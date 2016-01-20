@@ -403,7 +403,7 @@ angular.module('alternativas').controller('AlternativasController', ['$scope', '
 			$scope.findOne();
 			//need to call the method to list the perguntas here instead of direct call to service method
 			$scope.perguntas=Perguntas.listar();
-		}
+		};
 	}
 
 
@@ -590,15 +590,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		//  }
 		
 
-		$scope.slideUp = function () {
-		    $(function () {
-		    	// wait till load event fires so all resources are available
-		    	var jumboHeight = $('.jumbotron').outerHeight();
-		      	var scrolled = $(window).scrollTop();
-		      	$('.bg').css('height', (jumboHeight-scrolled) + 'px');	
-		    });
+		// $scope.slideUp = function () {
+		//     $(function () {
+		//     	// wait till load event fires so all resources are available
+		//     	var jumboHeight = $('.jumbotron').outerHeight();
+		//       	var scrolled = $(window).scrollTop();
+		//       	$('.bg').css('height', (jumboHeight-scrolled) + 'px');	
+		//     });
 
-		};
+		// };
 		// 	$(window).scroll(function(e){
 		//     parallax();
 		// });
@@ -606,138 +606,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	}
 	
 ]);
-angular.module('core').directive('perfectParallax', [
-  '$window', function ($window) {
+// var jumboHeight = $('.jumbotron').outerHeight();
+// function parallax(){
+//     var scrolled = $(window).scrollTop();
+//     $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+// }
 
-    return {
-      restrict: 'A',
-      scope: {
-        parallaxCss: '@',
-        parallaxInitVal: '@',
-        parallaxRatio: '@'
-      },
-      link: function(iScope, iElem, iAttr) {
-        var cssKey,
-          cssValue,
-          isSpecialVal,
-          parallaxCssVal,
-          parallaxOffset,
-          parallaxRatio,
-          parallaxInitVal,
-          cssValArray;
-
-        parallaxCssVal = iScope.parallaxCss ? iScope.parallaxCss : 'top';
-        cssValArray = parallaxCssVal.split(':');
-        cssKey = cssValArray[0];
-        cssValue = cssValArray[1];
-
-        isSpecialVal = cssValue ? true : false;
-        if (!cssValue) cssValue = cssKey;
-
-        parallaxRatio = iScope.parallaxRatio ? +iScope.parallaxRatio : 1.1;
-        parallaxInitVal = iScope.parallaxInitVal ? +iScope.parallaxInitVal : 0;
-
-        iElem.css(cssKey, parallaxInitVal + 'px');
-
-        function _onScroll() {
-          var resultVal;
-          var calcVal = $window.pageYOffset * parallaxRatio + parallaxInitVal;
-
-          if (isSpecialVal) {
-            resultVal = '' + cssValue + '(' + calcVal + 'px)';
-          } else {
-            resultVal = calcVal + 'px';
-          }
-          iElem.css(cssKey, resultVal);
-        };
-
-        $window.addEventListener('scroll', _onScroll);
-
-      }
-    };
-  }
-]);
-
-'use strict';
-
-angular.module('core').directive("homeJumbo", function ($window) {
-    return function(scope, element, attrs) {
-        angular.element($window).bind("scroll", function() {
-             // if (this.pageYOffset >= 100) {
-             //     scope.boolChangeClass = true;
-             //     console.log('Scrolled below header.');
-
-             // }
-             var jumb= document.querySelector(".bg");
-             jumb.style.height=this.pageYOffset;
-             console.log(jumb);
-             console.log(this.pageYOffset);
-            //scope.$apply();
-        });
-    };
-});
-.directive('parallaxBackground', ['$window', function($window) {
-  return {
-    restrict: 'A',
-    transclude: true,
-    template: '<div ng-transclude></div>',
-    scope: {
-      parallaxRatio: '@',
-      parallaxVerticalOffset: '@',
-    },
-    link: function($scope, elem, attrs) {
-      var setPosition = function () {
-        var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1) - ($scope.parallaxVerticalOffset || 0);
-        // horizontal positioning
-        elem.css('background-position', "50% " + calcValY + "px");
-      };
-
-      // set our initial position - fixes webkit background render bug
-      angular.element($window).bind('load', function(e) {
-        setPosition();
-        $scope.$apply();
-      });
-
-      angular.element($window).bind("scroll", setPosition);
-      angular.element($window).bind("touchmove", setPosition);
-    }  // link function
-  };
-}]);
-angular.module('core').directive('parallax', ['$window', function($window) {
-  return {
-    restrict: 'A',
-    scope: {
-      parallaxRatio: '@',
-      parallaxVerticalOffset: '@',
-      parallaxHorizontalOffset: '@',
-    },
-    link: function($scope, elem, attrs) {
-      var setPosition = function () {
-        if(!$scope.parallaxHorizontalOffset) $scope.parallaxHorizontalOffset = '0';
-        var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
-        if (calcValY <= $window.innerHeight) {
-          var topVal = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
-          var hozVal = ($scope.parallaxHorizontalOffset.indexOf("%") === -1 ? $scope.parallaxHorizontalOffset + 'px' : $scope.parallaxHorizontalOffset);
-          elem.css('transform', 'translate(' + hozVal + ', ' + topVal + 'px)');
-        }
-      };
-
-      setPosition();
-
-      angular.element($window).bind("scroll", setPosition);
-      angular.element($window).bind("touchmove", setPosition);
-    }  // link function
-  };
-}])
-var jumboHeight = $('.jumbotron').outerHeight();
-function parallax(){
-    var scrolled = $(window).scrollTop();
-    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
-}
-
-$(window).scroll(function(e){
-    parallax();
-});
+// $(window).scroll(function(e){
+//     parallax();
+// });
 'use strict';
 
 //Menu service used for managing  menus
@@ -1344,6 +1221,10 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.create = function() {
 			// Create new Exame object
 
+			var exame= new Exames({
+
+			});
+
 			// Redirect after save
 			exame.$save(function(response) {
 				$location.path('exames/' + response._id);
@@ -1417,32 +1298,32 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 
 		$scope.animationsEnabled = true;
 
-		$scope.open = function (size) {
+		// $scope.open = function (size) {
 
-		  var modalInstance = $uibModal.open({
-		    animation: $scope.animationsEnabled,
-		    templateUrl: 'myModalContent.html',
-		    //controller: 'ModalInstanceCtrl',
-		    size: size,
-		    resolve: {
-		      items: function () {
-		       // return $scope.items;
-		      }
-		    }
-		  });
+		//   var modalInstance = $uibModal.open({
+		//     animation: $scope.animationsEnabled,
+		//     templateUrl: 'myModalContent.html',
+		//     //controller: 'ModalInstanceCtrl',
+		//     size: size,
+		//     resolve: {
+		//       items: function () {
+		//        // return $scope.items;
+		//       }
+		//     }
+		//   });
 
-		  modalInstance.result.then(function () {
-		   // $scope.selected = selectedItem;
-		  }, function () {
-		    $log.info('Modal dismissed at: ' + new Date());
-		  });
-		};
+		//   modalInstance.result.then(function () {
+		//    // $scope.selected = selectedItem;
+		//   }, function () {
+		//     $log.info('Modal dismissed at: ' + new Date());
+		//   });
+		// };
 		//end of modal
 			//inicio da resolucao do exame
 
 		$scope.perguntasResolvidas=[{}];
 		$scope.addResolvida= function(Pergunta,alternativa){
-			resolvida={};
+			var resolvida={};
 		};
 
 
@@ -1450,7 +1331,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.limpaCampos=function(){
 			$scope.instruccoes='';
 			$scope.disciplina='';
-		}
+		};
 
 		//Year Picker action
 		$scope.today = function() {
@@ -1492,13 +1373,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.format = $scope.formats[0];
 
 		$scope.datepickerOptions = {
-		  datepickerMode:"'year'",
-		  minMode:"'year'",
-		  minDate:"minDate",
-		  showWeeks:"false",
-		  clearText:"limpar",
-		  currentText:"hoje",
-		  closeText:"fechar"
+		  datepickerMode:'year',
+		  minMode:'year',
+		  minDate:'minDate',
+		  showWeeks:'false',
+		  clearText:'limpar',
+		  currentText:'hoje',
+		  closeText:'fechar'
 		};
 
 		$scope.resolver= function(){
@@ -1510,7 +1391,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			 	//if(i.hasOwnProperty(perguntas))
 			 		console.log('id '+perguntas[i]._id);
 			//added 'a' to the  begining of the name for each property to avoid name begining with numerical literal
-			eval("obj.a"+perguntas[i]._id+" ="+"this.a"+perguntas[i]._id+";");  //
+			// eval('obj.a'+perguntas[i]._id+'' ='+'this.a'+perguntas[i]._id+';'');  //
 			console.log(obj);
 			//pergunta=2;
 			//console.log(pergunta+perguntas[i]._id);
@@ -1522,7 +1403,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			// 	tempo:this.tempo,
 			// 	disciplina:this.disciplina._id
 			// });
-		}
+		};
 	}
 ]);
 'use strict';
@@ -1974,7 +1855,7 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		$scope.callFunctions= function(){
 			$scope.findOne();
 			$scope.listaExames();
-		}
+		};
 		//direct to create
 		$scope.direct= function(){
 			$location.path('perguntas/create');

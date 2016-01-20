@@ -12,6 +12,10 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.create = function() {
 			// Create new Exame object
 
+			var exame= new Exames({
+
+			});
+
 			// Redirect after save
 			exame.$save(function(response) {
 				$location.path('exames/' + response._id);
@@ -85,32 +89,32 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 
 		$scope.animationsEnabled = true;
 
-		$scope.open = function (size) {
+		// $scope.open = function (size) {
 
-		  var modalInstance = $uibModal.open({
-		    animation: $scope.animationsEnabled,
-		    templateUrl: 'myModalContent.html',
-		    //controller: 'ModalInstanceCtrl',
-		    size: size,
-		    resolve: {
-		      items: function () {
-		       // return $scope.items;
-		      }
-		    }
-		  });
+		//   var modalInstance = $uibModal.open({
+		//     animation: $scope.animationsEnabled,
+		//     templateUrl: 'myModalContent.html',
+		//     //controller: 'ModalInstanceCtrl',
+		//     size: size,
+		//     resolve: {
+		//       items: function () {
+		//        // return $scope.items;
+		//       }
+		//     }
+		//   });
 
-		  modalInstance.result.then(function () {
-		   // $scope.selected = selectedItem;
-		  }, function () {
-		    $log.info('Modal dismissed at: ' + new Date());
-		  });
-		};
+		//   modalInstance.result.then(function () {
+		//    // $scope.selected = selectedItem;
+		//   }, function () {
+		//     $log.info('Modal dismissed at: ' + new Date());
+		//   });
+		// };
 		//end of modal
 			//inicio da resolucao do exame
 
 		$scope.perguntasResolvidas=[{}];
 		$scope.addResolvida= function(Pergunta,alternativa){
-			resolvida={};
+			var resolvida={};
 		};
 
 
@@ -118,7 +122,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.limpaCampos=function(){
 			$scope.instruccoes='';
 			$scope.disciplina='';
-		}
+		};
 
 		//Year Picker action
 		$scope.today = function() {
@@ -160,13 +164,13 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		$scope.format = $scope.formats[0];
 
 		$scope.datepickerOptions = {
-		  datepickerMode:"'year'",
-		  minMode:"'year'",
-		  minDate:"minDate",
-		  showWeeks:"false",
-		  clearText:"limpar",
-		  currentText:"hoje",
-		  closeText:"fechar"
+		  datepickerMode:'year',
+		  minMode:'year',
+		  minDate:'minDate',
+		  showWeeks:'false',
+		  clearText:'limpar',
+		  currentText:'hoje',
+		  closeText:'fechar'
 		};
 
 		$scope.resolver= function(){
@@ -178,7 +182,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			 	//if(i.hasOwnProperty(perguntas))
 			 		console.log('id '+perguntas[i]._id);
 			//added 'a' to the  begining of the name for each property to avoid name begining with numerical literal
-			eval("obj.a"+perguntas[i]._id+" ="+"this.a"+perguntas[i]._id+";");  //
+			// eval('obj.a'+perguntas[i]._id+'' ='+'this.a'+perguntas[i]._id+';'');  //
 			console.log(obj);
 			//pergunta=2;
 			//console.log(pergunta+perguntas[i]._id);
@@ -190,6 +194,6 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			// 	tempo:this.tempo,
 			// 	disciplina:this.disciplina._id
 			// });
-		}
+		};
 	}
 ]);

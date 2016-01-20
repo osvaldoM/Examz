@@ -24,15 +24,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		//  }
 		
 
-		$scope.slideUp = function () {
-		    $(function () {
-		    	// wait till load event fires so all resources are available
-		    	var jumboHeight = $('.jumbotron').outerHeight();
-		      	var scrolled = $(window).scrollTop();
-		      	$('.bg').css('height', (jumboHeight-scrolled) + 'px');	
-		    });
+		// $scope.slideUp = function () {
+		//     $(function () {
+		//     	// wait till load event fires so all resources are available
+		//     	var jumboHeight = $('.jumbotron').outerHeight();
+		//       	var scrolled = $(window).scrollTop();
+		//       	$('.bg').css('height', (jumboHeight-scrolled) + 'px');	
+		//     });
 
-		};
+		// };
 		// 	$(window).scroll(function(e){
 		//     parallax();
 		// });

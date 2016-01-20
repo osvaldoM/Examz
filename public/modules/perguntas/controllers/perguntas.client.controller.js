@@ -84,7 +84,7 @@ angular.module('perguntas').controller('PerguntasController', ['$scope', '$state
 		$scope.callFunctions= function(){
 			$scope.findOne();
 			$scope.listaExames();
-		}
+		};
 		//direct to create
 		$scope.direct= function(){
 			$location.path('perguntas/create');

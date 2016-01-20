@@ -38,8 +38,8 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
 	var article = req.article;
-	console.log("arrr "+	article);
-		console.log("arrr222 "+	req.body);
+	console.log('arrr '+	article);
+		console.log('arrr222 '+	req.body);
 
 	article = _.extend(article, req.body);
 

@@ -96,7 +96,7 @@ exports.list = function(req, res) {
 	return 0 for empty
 */
 exports.tiraCopia= function(filmeId,cb){
-	console.log("filme recebido "+filmeId)
+	console.log('filme recebido '+filmeId);
 	Copia.findOne({'livre':true,filme:filmeId}).exec(function(err,copia){
 		if(err){
 			return cb(err);
@@ -118,10 +118,10 @@ exports.tiraCopia= function(filmeId,cb){
 
 
 	});		
-}
+};
 
 exports.poeCopia= function(copiaId){
-	console.log("copia recebida "+copiaId)
+	console.log('copia recebida '+copiaId);
 	Copia.findById(copiaId).exec(function(err,copia){
 		if(err){
 			return err;
@@ -143,4 +143,4 @@ exports.poeCopia= function(copiaId){
 
 
 	});		
-}
+};

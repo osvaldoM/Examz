@@ -49,7 +49,7 @@ exports.addPergunta= function(exameId,perguntaId){
 					return; 
 					
 				} else {
-					//console.log('sucesso');
+					console.log('sucesso');
 				}
 			});
 

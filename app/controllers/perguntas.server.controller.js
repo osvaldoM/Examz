@@ -131,7 +131,7 @@ exports.read = function(req, res) {
 //returns an asked pergunta without population
 exports.readOrigi = function(req, res) {
 			// console.log('AT read '+req.params.perguntaId);
-			console.log("id eh "+req.query.perguntaId);
+			console.log('id eh '+req.query.perguntaId);
 
 	// Pergunta.findById(req.query.perguntaId).exec(function(err,pergunta){
 	// 	if(err){
@@ -144,7 +144,7 @@ exports.readOrigi = function(req, res) {
 	// 		res.json(pergunta);
 	// 	}
 	// });
-res.json("ola");
+res.json('ola');
 };
 
 exports.byExame = function(req, res) {
