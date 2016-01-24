@@ -1,8 +1,24 @@
 {
-  "name": "examz",
-  "description": "aa",
+  "name": "Examz",
+  "description": "Online Exams Plattaform   Prepare-se para os exames de forma simples rápida e prática ",
   "version": "0.0.1",
-  "author": "Aa",
+  "author":{"name":"Osvaldo Maria", "email":"osvaldoomaria@gmail.com","url":"facebook.com/osvaldoM"},
+  "contributors":[
+    {"name":"Amarildo Come","email":"comeab@gmail.com"},
+    {"name":"Camilo Chemane"},
+    {"name": "Chris Anne Camissa","email":"chriscamissa@live.com"}
+    ],
+    "keywords": [
+      "examz",
+      "uem",
+      "online",
+      "preparacao",
+      "exames"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/osvaldoM/teste.git"
+    },
   "engines": {
     "node": "0.10.x",
     "npm": "1.4.x"

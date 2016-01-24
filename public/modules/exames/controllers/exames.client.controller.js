@@ -13,6 +13,10 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			// Create new Exame object
 
 			var exame= new Exames({
+				this.ano=ano,
+				this.tempo=tempo,
+				this.instruccoes=instruccoes,
+				this.disciplina=disciplina
 
 			});
 
