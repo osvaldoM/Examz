@@ -13,10 +13,10 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 			// Create new Exame object
 
 			var exame= new Exames({
-				this.ano=ano,
-				this.tempo=tempo,
-				this.instruccoes=instruccoes,
-				this.disciplina=disciplina
+				ano:this.ano,
+				tempo:this.tempo,
+				instruccoes:this.instruccoes,
+				disciplina:this.disciplina
 
 			});
 
@@ -178,7 +178,7 @@ angular.module('exames').controller('ExamesController', ['$scope', '$stateParams
 		};
 
 		$scope.resolver= function(){
-			console.log('radio'+this.a56442ea899f1c3e81f385ec8);
+			//console.log('radio'+this.a56442ea899f1c3e81f385ec8);
 			var perguntas=$scope.exame._perguntas;
 			console.log(perguntas);
 			var obj={};

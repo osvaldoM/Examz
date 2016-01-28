@@ -39,7 +39,7 @@
 			        	</div>
 			        	<div class="col-md-11">
 				        	<div data-ng-repeat="alternativa in pergunta._alternativas" class="ro">
-				               <input type="radio" data-ng-name={{"a"+pergunta._id}} name=data-ng-bind="'a'+pergunta._id" data-ng-value="alternativa.id" > 
+				               <input type="radio" data-ng-name={{pergunta._id}} name=data-ng-bind="'a'+pergunta._id" data-ng-value="alternativa.id" > 
 				              <span data-ng-bind="alternativa.conteudo" >  </span>
 				        	</div>
 				        	<button type="button" class="btn btn-success" ng-click="open('lg')">?</button>

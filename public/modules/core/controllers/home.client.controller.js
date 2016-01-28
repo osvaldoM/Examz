@@ -6,6 +6,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
+		//scope variables for flipper directives
+		$scope.flipped = false;
+		$scope.flip = function() {
+		$scope.flipped = !$scope.flipped;
+	};
 
 
 		// $scope.myInterval = 5000;
